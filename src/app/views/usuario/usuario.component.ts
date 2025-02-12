@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { JumbotronComponent } from '../../component/jumbotron/jumbotron.component';
-import { CalendarComponent } from '../../component/calendar/calendar.component';
 import { FormComponent } from '../../component/form/form.component';
 import { InstructoresComponent } from '../../component/instructores/instructores.component';
 import { CardComponent } from '../../component/card/card.component';
-import { CalendarioComponent } from '../../component/calendario/calendario.component';
 
 @Component({
   selector: 'app-usuario',
-  imports: [JumbotronComponent, FormComponent, InstructoresComponent, CardComponent, CalendarioComponent],
+  imports: [JumbotronComponent, FormComponent, InstructoresComponent, CardComponent],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css'
 })
