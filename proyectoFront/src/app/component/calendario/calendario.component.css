@@ -1,0 +1,23 @@
+.small-calendar {
+    width: 80%;
+    margin: 0 auto;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.small-calendar .fc {
+    font-size: 12px;
+}
+
+.small-calendar .fc-header-toolbar {
+    padding: 8px;
+}
+
+.small-calendar .fc-dayGridWeek-view .fc-day {
+    padding: 4px;
+}
+
+.small-calendar .fc-event {
+    font-size: 12px;
+    padding: 4px;
+}

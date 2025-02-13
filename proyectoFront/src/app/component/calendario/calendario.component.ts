@@ -1,26 +1,23 @@
-import { JsonPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { NgbCalendar, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Component } from '@angular/core';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendarOptions } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-calendario',
-  imports: [NgbDatepickerModule, FormsModule, JsonPipe],
+  standalone: true,
+  imports: [FullCalendarModule],
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
 export class CalendarioComponent {
-  today = inject(NgbCalendar).getToday();
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridWeek',
+    plugins: [dayGridPlugin],
+    selectable: true
+  };
 
-  model: NgbDateStruct = { year: 2025, month: 2, day: 12 };
-  date: NgbDateStruct = { year: 2025, month: 2, day: 12 };
-
-  selectToday() {
-    this.model = { ...this.today };
-  }
-
-  onNavigate(event: any) {
-    console.log('Navigate event:', event);
-    this.date = event.next;
+  handleDateClick(arg: any) {
+    alert(`Fecha seleccionada: ${arg.dateStr}`);
   }
 }
