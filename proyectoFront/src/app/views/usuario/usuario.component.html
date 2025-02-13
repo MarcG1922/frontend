@@ -1,0 +1,33 @@
+<app-jumbotron></app-jumbotron>
+<div id="page">
+    <section>
+        <div class="section-header">
+            <h2>Nuestras competiciones</h2>
+            <p>Descubre en qué competencias participamos a lo largo del curso</p>
+        </div>
+        <div class="content">
+            <div class="grid">
+                <!-- CARD -->
+                @for (item of cards; track item; let i = $index) {
+                <app-card [cards]="cards[i]" [text]="text[i]"></app-card>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header">
+            <h2>Nuestros Instructores</h2>
+            <p>Conoce a nuestros expertos instructores</p>
+        </div>
+        <div class="instructores-container">
+            @for (instructor of name; track instructor; let i = $index) {
+            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="imageUrl">
+            </app-instructores>
+            }
+        </div>
+        <app-horario></app-horario>
+    </section>
+</div>
+<app-calendario></app-calendario>
+<app-form></app-form>
