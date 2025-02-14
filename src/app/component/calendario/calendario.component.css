@@ -1,0 +1,60 @@
+.calendar-container {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.calendar-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.view-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+:host ::ng-deep .cal-week-view {
+  border-radius: 8px;
+  border: 1px solid #e1e1e1;
+}
+
+:host ::ng-deep .cal-month-view {
+  border-radius: 8px;
+  border: 1px solid #e1e1e1;
+}
+
+:host ::ng-deep .cal-hour-segment {
+  height: 40px !important;
+}
+
+:host ::ng-deep .cal-hour {
+  font-weight: bold;
+}
+
+.btn i {
+  margin: 0 5px;
+} 

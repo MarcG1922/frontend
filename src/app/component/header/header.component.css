@@ -1,0 +1,16 @@
+/* header.component.css */
+.bg-primary {
+    background-color: #2100c4 !important;
+  }
+  
+  .navbar-brand {
+    color: white !important;
+  }
+  
+  .nav-link {
+    color: rgba(255,255,255,.55) !important;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    color: white !important;
+  }
