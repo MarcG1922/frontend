@@ -21,8 +21,8 @@
             <p>Conoce a nuestros expertos instructores</p>
         </div>
         <div class="instructores-container">
-            @for (instructor of name; track instructor; let i = $index) {
-            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="imageUrl">
+            @for (instructor of cards; track instructor; let i = $index) {
+            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="imageUrl[i]">
             </app-instructores>
             }
         </div>

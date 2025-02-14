@@ -5,6 +5,7 @@ import { InstructoresComponent } from '../../component/instructores/instructores
 import { CardComponent } from '../../component/card/card.component';
 import { CalendarioComponent } from '../../component/calendario/calendario.component';
 import { HorarioComponent } from '../../component/horario/horario.component';
+import { RequestService } from '../../services/request.service';
 
 @Component({
   selector: 'app-usuario',
@@ -18,6 +19,20 @@ export class UsuarioComponent {
   public text: string[] = ["Descripción 1", "Descripción 2", "Descripción 3", "Descripción 4", "Descripción 5", "Descripción 6"]
   public name: string[] = ["Ana García", "Carlos Ruiz", "Laura Martín", "Pedro Sánche"]
   public speed: string[] = ["Patinaje Artístico", "Velocidad", "Iniciacion", "Freestyle"]
-  public imageUrl: string = "https://ethic.es/wp-content/uploads/2023/03/imagen.jpg"
+  public imageUrl: string[] = []
+
+  public constructor(public service: RequestService) { }
+
+  public getResponse(): void {
+    this.service.getEventos().subscribe((response) => {
+      this.cards = response.member.map((member) => member.titulo);
+      this.text = response.member.map((member) => member.descripcion);
+      this.imageUrl = response.member.map((member) => member.imagen);
+    });
+  }
+
+  public ngOnInit(): void {
+    this.getResponse();
+  }
 
 }
