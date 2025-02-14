@@ -1,14 +1,28 @@
 import { Component } from '@angular/core';
-import { JumbotronComponent } from '../../component/jumbotron/jumbotron.component';
-import { CalendarComponent } from '../../component/calendar/calendar.component';
-import { FormComponent } from '../../component/form/form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-administrador',
-  imports: [JumbotronComponent, CalendarComponent, FormComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './administrador.component.html',
   styleUrl: './administrador.component.css'
 })
 export class AdministradorComponent {
+  public case: string = 'one';
 
+  public onLoginSubmit(): void {
+    this.case = 'three';
+  }
+
+  public onRegisterSubmit(): void {
+    this.case = 'three';
+  }
+
+  public goToRegister(): void {
+    this.case = 'two';
+  }
+
+  public goToLogin(): void {
+    this.case = 'one';
+  }
 }
