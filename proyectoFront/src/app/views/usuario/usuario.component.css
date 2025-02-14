@@ -1,0 +1,7 @@
+.divider {
+    border: 0; /* Elimina el borde predeterminado */
+    height: 2px; /* Grosor de la barra */
+    background: #4e00c4; 
+    margin-top: 50px ;
+    margin-bottom: 80px; /* Espacio arriba y abajo de la barra */
+}

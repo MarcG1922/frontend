@@ -39,3 +39,30 @@
   width: 250px;
 }
 
+.jumbotron {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  background-image: url('assets/images/jumbotron2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; /* La imagen cubre todo el contenedor */
+  background-position: center; /* Centra la imagen en el contenedor */
+  padding: 2rem 1rem;
+  height: 105vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden; /* Evita que el pseudo-elemento se desborde */
+}
+
+.jumbotron::before {
+  content: ''; /* Necesario para que el pseudo-elemento se renderice */
+  position: absolute; /* Posiciona el pseudo-elemento sobre el jumbotron */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45); /* Fondo negro con 50% de opacidad */
+  z-index: 1; /* Coloca el pseudo-elemento detrás del contenido */
+}
+
+.jumbotron > * {
+  position: relative; /* Asegura que el contenido esté por encima del pseudo-elemento */
+  z-index: 2; /* Coloca el contenido por encima de la capa semi-transparente */
+}
