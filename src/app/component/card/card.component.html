@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" (click)="toggleModal()">
     <div style="height: 200px;" class="photo"
         [ngStyle]="{'background-image': 'url(https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg)'}">
     </div>
@@ -9,3 +9,15 @@
         </div>
     </div>
 </div>
+
+<app-modal
+    [show]="showModal"
+    [title]="cards"
+    [description]="text"
+    [imageUrl]="'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg'"
+    [eventDate]="'15 de Mayo, 2024'"
+    [eventLocation]="'Polideportivo Municipal de Manises'"
+    [eventTime]="'10:00 AM'"
+    (closeModal)="toggleModal()"
+    (actionClick)="onActionClick()">
+</app-modal>

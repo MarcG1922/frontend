@@ -104,24 +104,26 @@ h3 a{
 
 /* Efecto hover con animación */
 .custom-hover:hover {
-  animation: pulse 0.5s ease-in-out; /* Aplica la animación */
-  background-color: #0056b3; /* Cambia el color de fondo */
-  border-color: #0056b3; /* Cambia el color del borde */
+  animation: none;
+  transform: scale(1.05);
+  background-color: #0056b3;
+  border-color: #0056b3;
+  box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Definición de la animación */
 @keyframes pulse {
   0% {
-    transform: scale(1); /* Tamaño normal */
-    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4); /* Sombra inicial */
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
   }
   50% {
-    transform: scale(1.05); /* Escala un 5% más grande */
-    box-shadow: 0 0 10px 5px rgba(0, 123, 255, 0.4); /* Sombra más pronunciada */
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 10px rgba(0, 123, 255, 0.4);
   }
   100% {
-    transform: scale(1); /* Vuelve al tamaño normal */
-    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); /* Sombra desaparece */
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
   }
 }
 
@@ -139,4 +141,35 @@ h3 a{
 
 .jumbotron p {
   font-weight: 400;
+}
+
+.pulse {
+    animation-name: pulse;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px 10px rgba(0, 123, 255, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
+
+/* Mantener el hover existente pero ajustarlo para trabajar con la animación */
+.custom-hover:hover {
+    animation: none;
+    transform: scale(1.05);
+    background-color: #0056b3;
+    border-color: #0056b3;
+    box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.5);
 }

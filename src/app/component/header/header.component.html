@@ -1,8 +1,10 @@
 <header class="header">
   <nav class="navbar">
     <div class="logo-container">
-      <img [src]="logoPath" alt="Logo Club Patinaje" class="logo">  
-      <span class="brand-name">Club Patinaje Manises</span>
+      <a [routerLink]="['/']" class="logo-link">
+        <img [src]="logoPath" alt="Logo Club Patinaje" class="logo">  
+        <span class="brand-name">Club Patinaje Manises</span>
+      </a>
     </div>
     
     <div class="auth-buttons">

@@ -1,15 +1,25 @@
-import { NgStyle } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-card',
-  imports: [NgStyle],
+  standalone: true,
+  imports: [CommonModule, ModalComponent],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+  @Input() cards: string = '';
+  @Input() text: string = '';
+  showModal: boolean = false;
 
-  @Input() cards: string = "";
-  @Input() text: string = "";
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
 
+  onActionClick() {
+    console.log('Inscripción solicitada');
+    // Aquí iría la lógica de inscripción
+  }
 }
