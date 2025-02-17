@@ -4,7 +4,7 @@ import { AdministradorComponent } from './views/administrador/administrador.comp
 import { SocioComponent } from './views/socio/socio.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'usuario', pathMatch: 'full' },
+    { path: '', redirectTo: 'admin', pathMatch: 'full' },
     { path: 'usuario', component: UsuarioComponent },
     { path: 'socio', component: SocioComponent },
     { path: 'admin', component: AdministradorComponent }

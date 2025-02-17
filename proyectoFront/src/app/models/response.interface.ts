@@ -1,18 +1,39 @@
 export interface Eventos {
     "@context": string;
-    "@id":      string;
-    "@type":    string;
+    "@id": string;
+    "@type": string;
     totalItems: number;
-    member:     Member[];
+    member: EventoMember[];
 }
 
-export interface Member {
-    "@id":       string;
-    "@type":     string;
-    id:          number;
-    titulo:      string;
+export interface EventoMember {
+    "@id": string;
+    "@type": string;
+    id: number;
+    titulo: string;
     descripcion: string;
-    imagen:      string;
+    imagen: string;
     comentarios: any[];
-    fecha:       Date;
+    fecha: Date;
 }
+
+export interface Usuarios {
+    "@context": string;
+    "@id": string;
+    "@type": string;
+    totalItems: number;
+    member: UsuarioMember[];
+}
+
+export interface UsuarioMember {
+    "@id": string;
+    "@type": string;
+    id: number;
+    nombre: string;
+    email: string;
+    contrasenya: string;
+    telefono: number;
+    admin: boolean;
+    comentarios: any[];
+}
+

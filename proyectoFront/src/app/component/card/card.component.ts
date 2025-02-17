@@ -11,5 +11,6 @@ export class CardComponent {
 
   @Input() cards: string = "";
   @Input() text: string = "";
+  @Input() photo: string = 'url(https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg)';
 
 }
