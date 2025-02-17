@@ -7,5 +7,13 @@ export const routes: Routes = [
     { path: '', redirectTo: 'usuario', pathMatch: 'full' },
     { path: 'usuario', component: UsuarioComponent },
     { path: 'socio', component: SocioComponent },
-    { path: 'admin', component: AdministradorComponent }
+    { path: 'admin', component: AdministradorComponent },
+    { 
+        path: 'login', 
+        loadComponent: () => import('./component/login/login.component').then(m => m.LoginComponent)
+    },
+    { 
+        path: 'register', 
+        loadComponent: () => import('./component/register/register.component').then(m => m.RegisterComponent)
+    }
 ];
