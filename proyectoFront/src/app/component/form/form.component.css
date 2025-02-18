@@ -1,97 +1,96 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
-
-.container {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-}
-
-.card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
     color: #333;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Título del formulario */
+.form-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2575fc;
+}
+
+/* Grupos de campos del formulario */
+.form-group {
+    position: relative;
     margin-bottom: 20px;
 }
 
-/* Estilos del formulario */
-.contact-form {
-    display: flex;
-    flex-direction: column;
+/* Iconos */
+.form-group .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333; /* Dark Gray for icons */
+    font-size: 1.2rem;
 }
 
-.form-group {
-    margin-bottom: 15px;
+/* Special positioning for textarea icon */
+.form-group textarea + .icon {
+    top: 12px; /* Adjust this value to position the icon at the top */
+    transform: translateY(0);
 }
 
-label {
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 5px;
-    display: block;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
+/* Campos de entrada */
+.form-group input,
+.form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
+    padding: 12px 12px 12px 40px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
 
-textarea {
+.form-group textarea {
     resize: vertical;
+    min-height: 120px;
 }
 
-/* Estilos para mensajes de error */
-input:invalid,
-textarea:invalid {
-    border-color: #ff6b6b;
+/* Efecto al enfocar los campos */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2575fc;
+    outline: none;
 }
 
-input:invalid + .error-message,
-textarea:invalid + .error-message {
-    display: block;
-}
-
-.error-message {
-    color: #ff6b6b;
-    font-size: 14px;
-    margin-top: 5px;
-    display: none;
-}
-
-/* Estilos del botón */
+/* Botón de enviar */
 .submit-btn {
-    background-color: #007bff;
+    width: 100%;
+    padding: 12px;
+    background: #333; /* Dark Gray for button */
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 1rem;
     cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #0056b3;
+    background: #4d4d4d; /* A slightly lighter shade for hover */
+}
+
+.submit-btn .fas {
+    margin-right: 8px;
 }
