@@ -1,13 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  isMenuOpen = false;
+  logoPath = 'patinaje.jpg';
 
-    @Input() photo: string = 'https://www.manises.es/sites/www.manises.es/files/images/ayto/deportes/clubs/patinaje.jpg';
-
+  // Método para alternar el menú
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }

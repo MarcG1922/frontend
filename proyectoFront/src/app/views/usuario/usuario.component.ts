@@ -4,11 +4,18 @@ import { FormComponent } from '../../component/form/form.component';
 import { InstructoresComponent } from '../../component/instructores/instructores.component';
 import { CardComponent } from '../../component/card/card.component';
 import { CalendarioComponent } from '../../component/calendario/calendario.component';
-import { HorarioComponent } from '../../component/horario/horario.component';
+import { InfoComponent } from '../../component/info/info.component';
 
 @Component({
   selector: 'app-usuario',
-  imports: [JumbotronComponent, FormComponent, InstructoresComponent, CardComponent, CalendarioComponent, HorarioComponent],
+  imports: [
+    JumbotronComponent, 
+    FormComponent, 
+    InstructoresComponent, 
+    CardComponent, 
+    CalendarioComponent,
+    InfoComponent
+  ],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css'
 })
