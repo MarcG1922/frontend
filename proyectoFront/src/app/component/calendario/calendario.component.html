@@ -1,0 +1,58 @@
+<div class="calendar-container">
+  <h2>Horario de Clases</h2>
+  
+  <div class="calendar-header">
+    <div class="controls">
+      <button class="btn btn-primary" (click)="previousView()">
+        <i class="fas fa-chevron-left"></i> Anterior
+      </button>
+      <button class="btn btn-outline-secondary" (click)="today()">
+        Hoy
+      </button>
+      <button class="btn btn-primary" (click)="nextView()">
+        Siguiente <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    
+    <div class="view-controls">
+      <button class="btn" 
+              [class.btn-primary]="view === CalendarView.Month"
+              [class.btn-outline-primary]="view !== CalendarView.Month"
+              (click)="setView(CalendarView.Month)">
+        Mes
+      </button>
+      <button class="btn"
+              [class.btn-primary]="view === CalendarView.Week"
+              [class.btn-outline-primary]="view !== CalendarView.Week"
+              (click)="setView(CalendarView.Week)">
+        Semana
+      </button>
+    </div>
+    
+    <h3>{{ viewDate | date:'MMMM yyyy' }}</h3>
+  </div>
+
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [locale]="'es'"
+      (eventClicked)="handleEventClick($event)"
+      (dayClicked)="dayClicked($event.day)">
+    </mwl-calendar-month-view>
+    
+    <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [dayStartHour]="9"
+      [dayEndHour]="20"
+      [locale]="'es'"
+      (eventClicked)="handleEventClick($event)"
+      (hourSegmentClicked)="handleTimeClick($event)">
+    </mwl-calendar-week-view>
+  </div>
+</div>

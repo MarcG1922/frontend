@@ -1,0 +1,57 @@
+<div class="container">
+    @if (case === 'one') {
+    <section class="form-section">
+        <h2>Iniciar Sesión</h2>
+        <form (ngSubmit)="onLoginSubmit()" class="form">
+            <div class="form-group">
+                <input type="text" name="name" id="name" placeholder="Nombre" required />
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" placeholder="Contraseña" required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-primary">Iniciar sesión</button>
+            </div>
+        </form>
+        <div class="form-footer">
+            <p>¿No tienes cuenta? <a (click)="goToRegister()">Regístrate</a></p>
+        </div>
+    </section>
+    }
+
+    @if (case === 'two') {
+    <section class="form-section">
+        <h2>Registro</h2>
+        <form (ngSubmit)="onRegisterSubmit()" class="form">
+            <div class="form-group">
+                <input type="text" name="name" id="name" placeholder="Nombre" required />
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" id="email" placeholder="Correo electrónico" required />
+            </div>
+            <div class="form-group">
+                <input type="tel" name="phone" id="phone" placeholder="Número de teléfono" required />
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" placeholder="Contraseña" required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-primary">Registrar</button>
+            </div>
+        </form>
+        <div class="form-footer">
+            <p>¿Ya tienes cuenta? <a (click)="goToLogin()">Inicia sesión</a></p>
+        </div>
+    </section>
+    }
+
+    @if (case === 'three') {
+    <section class="success-section">
+        <h2>Pagina principal de admin</h2>
+        <div class="success-buttons">
+            <button (click)="goToLogin()" class="btn-secondary">Volver al inicio de sesión</button>
+            <button (click)="goToRegister()" class="btn-secondary">Volver a registrarte</button>
+        </div>
+    </section>
+    }
+</div>

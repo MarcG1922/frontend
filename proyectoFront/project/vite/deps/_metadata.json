@@ -1,0 +1,106 @@
+{
+  "hash": "0e8b5cdb",
+  "configHash": "0dea562d",
+  "lockfileHash": "9601e9a2",
+  "browserHash": "1dc50be0",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "5cf79a48",
+      "needsInterop": false
+    },
+    "@angular/common/locales/es": {
+      "src": "../../../../../../node_modules/@angular/common/locales/es.mjs",
+      "file": "@angular_common_locales_es.js",
+      "fileHash": "31f98587",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "1b81dd5f",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "4a5a66eb",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "2eb42ddb",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "e068da23",
+      "needsInterop": false
+    },
+    "angular-calendar": {
+      "src": "../../../../../../node_modules/angular-calendar/fesm2020/angular-calendar.mjs",
+      "file": "angular-calendar.js",
+      "fileHash": "5bdacd7c",
+      "needsInterop": false
+    },
+    "angular-calendar/date-adapters/date-fns": {
+      "src": "../../../../../../node_modules/angular-calendar/date-adapters/esm/date-fns/index.js",
+      "file": "angular-calendar_date-adapters_date-fns.js",
+      "fileHash": "53ab44d8",
+      "needsInterop": false
+    },
+    "angular-draggable-droppable": {
+      "src": "../../../../../../node_modules/angular-draggable-droppable/fesm2020/angular-draggable-droppable.mjs",
+      "file": "angular-draggable-droppable.js",
+      "fileHash": "94eca527",
+      "needsInterop": false
+    },
+    "angular-resizable-element": {
+      "src": "../../../../../../node_modules/angular-resizable-element/fesm2020/angular-resizable-element.mjs",
+      "file": "angular-resizable-element.js",
+      "fileHash": "2d25238b",
+      "needsInterop": false
+    },
+    "ngx-cookie-service": {
+      "src": "../../../../../../node_modules/ngx-cookie-service/fesm2022/ngx-cookie-service.mjs",
+      "file": "ngx-cookie-service.js",
+      "fileHash": "ba41577d",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "22c56773",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-UIPE3PI6": {
+      "file": "chunk-UIPE3PI6.js"
+    },
+    "chunk-72E5TUSO": {
+      "file": "chunk-72E5TUSO.js"
+    },
+    "chunk-TGWKBCLE": {
+      "file": "chunk-TGWKBCLE.js"
+    },
+    "chunk-Q3Q6BKZP": {
+      "file": "chunk-Q3Q6BKZP.js"
+    },
+    "chunk-V5SUJSXX": {
+      "file": "chunk-V5SUJSXX.js"
+    },
+    "chunk-UVFDOJUO": {
+      "file": "chunk-UVFDOJUO.js"
+    },
+    "chunk-55JZBEKM": {
+      "file": "chunk-55JZBEKM.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}

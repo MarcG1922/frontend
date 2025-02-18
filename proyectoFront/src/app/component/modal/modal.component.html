@@ -1,0 +1,22 @@
+<div class="modal" *ngIf="show">
+    <div class="modal-overlay" (click)="onClose()"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>{{title}}</h2>
+            <button class="close-button" (click)="onClose()">×</button>
+        </div>
+        <div class="modal-body">
+            <img [src]="imageUrl" [alt]="title">
+            <div class="modal-text">
+                <h3>Descripción del evento</h3>
+                <p>{{description}}</p>
+                <div class="event-details">
+                    <p><strong>Fecha:</strong> {{eventDate}}</p>
+                    <p><strong>Lugar:</strong> {{eventLocation}}</p>
+                    <p><strong>Hora:</strong> {{eventTime}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div> 
