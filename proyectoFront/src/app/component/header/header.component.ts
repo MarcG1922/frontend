@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
   isMenuOpen = false;
-  logoPath = 'patinaje.jpg';
+  logoPath = 'patinaje.jpg'; 
   isLoggedIn : boolean = false;
 
   // Método para alternar el menú

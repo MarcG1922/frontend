@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RequestService } from '../../services/request.service';
+import { LoginComponent } from '../../component/login/login.component';
+import { RegisterComponent } from '../../component/register/register.component';
 
 @Component({
   selector: 'app-administrador',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LoginComponent, RegisterComponent],
   templateUrl: './administrador.component.html',
   styleUrl: './administrador.component.css'
 })
@@ -15,7 +17,7 @@ export class AdministradorComponent {
 
   public case: string = 'one';
   public errorMessage: string = '';
-
+  isLoggedIn : boolean = false;
 
   public loginForm = new FormGroup({
     email: new FormControl('', { nonNullable: true }),
@@ -28,7 +30,10 @@ export class AdministradorComponent {
     phone: new FormControl('', { nonNullable: true }),
     password: new FormControl('', { nonNullable: true })
   });
-
+  ngOnInit() {
+    this.isLoggedIn = Boolean(sessionStorage.getItem('isLoggedIn'));
+    console.log();  
+   }
   public onLoginSubmit(): void {
     this.service.getUsuarios().subscribe({
       next: (response) => {
