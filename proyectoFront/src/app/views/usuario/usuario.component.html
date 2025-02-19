@@ -9,7 +9,8 @@
             <div class="grid">
                 <!-- CARD -->
                 @for (item of cards; track item; let i = $index) {
-                <app-card [cards]="cards[i]" [text]="text[i]"></app-card>
+                <app-card [cards]="cards[i]" [text]="text[i]"
+                    [photo]="'url(' + competitionsImageUrl[i] + ')'"></app-card>
                 }
             </div>
         </div>
@@ -22,7 +23,7 @@
         </div>
         <div class="instructores-container">
             @for (instructor of name; track instructor; let i = $index) {
-            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="imageUrl">
+            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="instructorsImageUrl">
             </app-instructores>
             }
         </div>
