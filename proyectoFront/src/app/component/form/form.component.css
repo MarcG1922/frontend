@@ -1,0 +1,96 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Título del formulario */
+.form-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2575fc;
+}
+
+/* Grupos de campos del formulario */
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Iconos */
+.form-group .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0a023a; /* Dark Gray for icons */
+    font-size: 1.2rem;
+}
+
+/* Special positioning for textarea icon */
+.form-group textarea + .icon {
+    top: 12px; /* Adjust this value to position the icon at the top */
+    transform: translateY(0);
+}
+
+/* Campos de entrada */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Efecto al enfocar los campos */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+/* Botón de enviar */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #0a023a; /* Dark Gray for button */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #4d4d4d; /* A slightly lighter shade for hover */
+}
+
+.submit-btn .fas {
+    margin-right: 8px;
+}

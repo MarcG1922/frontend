@@ -1,13 +1,19 @@
 <header class="header">
   <nav class="navbar">
     <div class="logo-container">
-      <a [routerLink]="['/']" class="logo-link">
-        <img [src]="logoPath" alt="Logo Club Patinaje" class="logo">  
-        <span class="brand-name">Club Patinaje Manises</span>
-      </a>
+      <img [src]="logoPath" alt="Logo Club Patinaje" class="logo">
+      <span class="brand-name">Club Patinaje Manises</span>
     </div>
-    
-    <div class="auth-buttons">
+
+    <!-- Ícono de menú hamburguesa -->
+    <div class="hamburger" (click)="toggleMenu()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+    <!-- Contenedor de opciones de autenticación -->
+    <div class="auth-buttons" [class.active]="isMenuOpen">
       <a [routerLink]="['/login']" class="auth-button login">Log in</a>
       <a [routerLink]="['/register']" class="auth-button register">Register</a>
     </div>

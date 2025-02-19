@@ -12,4 +12,9 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent {
   isMenuOpen = false;
   logoPath = 'patinaje.jpg';
+
+  // Método para alternar el menú
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }

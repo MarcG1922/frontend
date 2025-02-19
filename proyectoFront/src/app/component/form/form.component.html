@@ -1,22 +1,31 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4" style="width: 100%; max-width: 600px;">
         <h1 class="text-center mb-4">Contacto</h1>
-        <form>
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingresa tu email">
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Mensaje</label>
-                <textarea class="form-control" id="message" rows="4" placeholder="Escribe tu mensaje"></textarea>
-            </div>
-            <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-            </div>
-        </form>
+    <form class="contact-form">
+        <!-- Campo Nombre -->
+        <div class="form-group">
+            <i class="fas fa-user icon"></i>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+        </div>
+        <!-- Campo Apellidos -->
+        <div class="form-group">
+            <i class="fas fa-users icon"></i>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+        </div>
+        <!-- Campo Email -->
+        <div class="form-group">
+            <i class="fas fa-envelope icon"></i>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <!-- Campo Mensaje -->
+        <div class="form-group">
+            <i class="fas fa-comment icon"></i>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje" required></textarea>
+        </div>
+        <!-- Botón de Enviar -->
+        <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Enviar Mensaje
+        </button>
+    </form>
     </div>
 </div>

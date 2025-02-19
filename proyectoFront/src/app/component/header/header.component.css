@@ -1,72 +1,48 @@
-/* header.component.css */
-.bg-primary {
-    background-color: #2100c4 !important;
-  }
-  
-  .navbar-brand {
-    color: white !important;
-  }
-  
-  .nav-link {
-    color: rgba(255,255,255,.55) !important;
-  }
-  
-  .nav-link:hover, .nav-link.active {
-    color: white !important;
-  }
-
+/* Estilos generales */
 .header {
-  position: absolute;
+  background-color: rgb(2, 2, 17);
+  color: white;
+  padding: 10px 10px;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(33, 33, 33, 0.85); /* Negro grisáceo translúcido */
-  backdrop-filter: blur(8px);
   z-index: 1000;
-  padding: 0.5rem 2rem; /* Reducido el padding vertical */
-  height: 50px; /* Altura fija más pequeña */
-  display: flex;
-  align-items: center;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
+  position: relative;
   align-items: center;
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Logo */
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Reducido el espacio */
 }
 
 .logo {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  object-fit: contain; /* Cambiado a contain para mejor visualización del favicon */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: white; /* Añadido fondo blanco para el favicon */
-  padding: 2px; /* Añadido padding para que el favicon no toque los bordes */
+  height: 55px;
+  margin-right: 10px;
 }
 
 .brand-name {
-  color: white;
-  font-size: 1.2rem; /* Texto más pequeño */
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
+/* Botones de autenticación */
 .auth-buttons {
   display: flex;
-  gap: 0.75rem;
+  gap: 10px;
 }
 
 .auth-button {
-  padding: 0.3rem 1rem; /* Botones más pequeños */
+  padding: 0.3rem 1rem;
   border-radius: 3px;
   text-decoration: none;
   font-weight: 500;
@@ -82,6 +58,7 @@
 .login:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: white;
+  transform: translateY(-3px);
 }
 
 .register {
@@ -91,34 +68,72 @@
 
 .register:hover {
   background-color: #f8f9fa;
-  transform: translateY(-1px);
+  transform: translateY(-3px);
 }
 
-/* Responsive design */
+.auth-button:hover {
+  opacity: 0.9;
+}
+
+/* Menú hamburguesa */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animación del icono cuando está activo */
+.hamburger.active .line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
-  .header {
-    padding: 0.5rem 1rem;
+  .hamburger {
+    display: flex;
   }
 
-  .brand-name {
-    font-size: 1.1rem;
+  .auth-buttons {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background-color: rgb(2, 2, 17);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .auth-buttons.active {
+    display: flex;
   }
 
   .auth-button {
-    padding: 0.25rem 0.75rem;
-    font-size: 0.85rem;
+    padding: 10px;
+    text-align: center;
   }
 }
 
-.logo-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
 
-.logo-link:hover {
-  opacity: 0.9;
-}
