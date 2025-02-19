@@ -18,12 +18,12 @@ h3 a{
   }
   
   .jumbotron .btn-primary {
-    background-color: #2100c4;
+    background-color: rgb(2, 2, 17);
     border-color: #2100c4;
   }
   
   .jumbotron .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #2100c4;
     border-color: #0056b3;
   }
 
@@ -43,7 +43,7 @@ h3 a{
   justify-content: center;
   width: 205px;
   height: 170px;
-  background: #ebebeb;  /* Gris clarito */
+  background-image: url('https://images.pexels.com/photos/2341290/pexels-photo-2341290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   border-radius: 3px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -80,7 +80,7 @@ h3 a{
 
 .single-list-topics-content:hover {
     color: #fff;
-    background:  #2100c4;
+    background:  rgb(2, 2, 17);
     box-shadow: 0 5px 10px rgba(71, 71, 71, 0.4);
     transform: scale(1.05) translateY(-5px); /* Efecto de levantar ligeramente el elemento */
 }

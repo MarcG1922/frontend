@@ -13,9 +13,13 @@
     </div>
 
     <!-- Contenedor de opciones de autenticación -->
+     @if(isLoggedIn === false) {
     <div class="auth-buttons" [class.active]="isMenuOpen">
       <a [routerLink]="['/login']" class="auth-button login">Log in</a>
       <a [routerLink]="['/register']" class="auth-button register">Register</a>
     </div>
+  }@else {
+    
+  }
   </nav>
 </header>
