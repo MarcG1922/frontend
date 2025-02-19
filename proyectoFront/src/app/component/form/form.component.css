@@ -41,7 +41,7 @@ body {
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: #333; /* Dark Gray for icons */
+    color: #0a023a; /* Dark Gray for icons */
     font-size: 1.2rem;
 }
 
@@ -78,7 +78,7 @@ body {
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background: #333; /* Dark Gray for button */
+    background: #0a023a; /* Dark Gray for button */
     color: #fff;
     border: none;
     border-radius: 8px;
