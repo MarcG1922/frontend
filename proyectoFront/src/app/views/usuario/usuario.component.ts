@@ -5,6 +5,7 @@ import { InstructoresComponent } from '../../component/instructores/instructores
 import { CardComponent } from '../../component/card/card.component';
 import { CalendarioComponent } from '../../component/calendario/calendario.component';
 import { RequestService } from '../../services/request.service';
+import { InfoComponent } from '../../component/info/info.component';
 
 @Component({
   selector: 'app-usuario',
@@ -13,7 +14,8 @@ import { RequestService } from '../../services/request.service';
     FormComponent, 
     InstructoresComponent, 
     CardComponent, 
-    CalendarioComponent
+    CalendarioComponent,
+    InfoComponent
   ],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css'
