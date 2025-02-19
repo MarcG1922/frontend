@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { RequestService } from '../../services/request.service';
 
 @Component({
   selector: 'app-register',
@@ -14,10 +15,12 @@ import { CookieService } from 'ngx-cookie-service';
 export class RegisterComponent {
   private cookieService = inject(CookieService);
   private router = inject(Router);
+  private requestService = inject(RequestService);
 
   registerData = {
     name: '',
     email: '',
+    phone: '',
     password: '',
     confirmPassword: ''
   };
@@ -28,41 +31,55 @@ export class RegisterComponent {
       return;
     }
 
-    try {
-      // Crear objeto de usuario
-      const userData = {
-        name: this.registerData.name,
-        email: this.registerData.email,
-        password: btoa(this.registerData.password), // Codificación básica
-        createdAt: new Date().toISOString(),
-        isLoggedIn: true
-      };
+    // Verificar si el correo ya está registrado
+    this.requestService.getUsuarios().subscribe({
+      next: (response) => {
+        const emailExists = response.member.some(user => user.email === this.registerData.email);
+        
+        if (emailExists) {
+          alert('Este correo ya está registrado. Por favor, usa otro o inicia sesión.');
+          return;
+        }
 
-      // Guardar en sessionStorage
-      sessionStorage.setItem('currentUser', JSON.stringify(userData));
-      sessionStorage.setItem('isLoggedIn', 'true');
+        // Si el correo no existe, proceder con el registro
+        const phoneNumber = parseInt(this.registerData.phone, 10);
+        
+        if (isNaN(phoneNumber)) {
+          alert('El número de teléfono debe ser un valor numérico válido.');
+          return;
+        }
 
-      // Guardar en localStorage para persistencia
-      const existingUsers = this.getExistingUsers();
-      existingUsers.push(userData);
-      localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
-
-      // Guardar en cookies
-      this.cookieService.set('userData', JSON.stringify(userData), 7);
-      this.cookieService.set('isLoggedIn', 'true', 7);
-
-      console.log('Datos guardados:', {
-        sessionStorage: sessionStorage.getItem('currentUser'),
-        localStorage: localStorage.getItem('registeredUsers'),
-        cookies: this.cookieService.get('userData')
-      });
-
-      alert('Registro exitoso');
-      this.router.navigate(['/usuario']);
-    } catch (error) {
-      console.error('Error al registrar:', error);
-      alert('Error al registrar. Por favor, intenta de nuevo.');
-    }
+        this.requestService.registerUsuario({
+          name: this.registerData.name,
+          email: this.registerData.email,
+          phone: phoneNumber,
+          password: this.registerData.password
+        }).subscribe({
+          next: (response) => {
+            console.log('Usuario registrado exitosamente:', response);
+            
+            // Guardar datos en sessionStorage
+            sessionStorage.setItem('currentUser', JSON.stringify(response));
+            sessionStorage.setItem('isLoggedIn', 'true');
+            
+            // Guardar en cookies
+            this.cookieService.set('userData', JSON.stringify(response), 7);
+            this.cookieService.set('isLoggedIn', 'true', 7);
+            
+            alert('Registro exitoso');
+            this.router.navigate(['/login']);
+          },
+          error: (error) => {
+            console.error('Error al registrar usuario:', error);
+            alert('Error al registrar usuario. Por favor, intenta de nuevo.');
+          }
+        });
+      },
+      error: (error) => {
+        console.error('Error al verificar el correo:', error);
+        alert('Error al verificar el correo. Por favor, intenta de nuevo.');
+      }
+    });
   }
 
   private getExistingUsers(): any[] {

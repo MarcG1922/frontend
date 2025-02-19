@@ -9,16 +9,16 @@ import { Usuarios } from '../models/response.interface';
 })
 export class RequestService {
 
-  public apiUrl = 'http://54.85.126.45/api/usuarios';
+  public apiUrl = 'http://localhost:8000/api/usuarios';
 
   constructor(public http: HttpClient) { }
 
   public getEventos(): Observable<Eventos> {
-    return this.http.get<Eventos>('http://54.85.126.45/api/eventos');
+    return this.http.get<Eventos>('http://localhost:8000/api/eventos');
   }
 
   public getUsuarios(): Observable<Usuarios> {
-    return this.http.get<Usuarios>('http://54.85.126.45/api/usuarios');
+    return this.http.get<Usuarios>('http://localhost:8000/api/usuarios');
   }
 
   public registerUsuario(userData: { name: string; email: string; phone: number; password: string }): Observable<UsuarioMember> {
