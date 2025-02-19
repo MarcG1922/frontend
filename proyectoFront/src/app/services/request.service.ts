@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Eventos, UsuarioMember } from '../models/response.interface';
+import { Comentarios, Eventos, UsuarioMember } from '../models/response.interface';
 import { Usuarios } from '../models/response.interface';
 
 @Injectable({
@@ -36,6 +36,10 @@ export class RequestService {
     };
 
     return this.http.post<UsuarioMember>(this.apiUrl, body, { headers });
+  }
+
+  public getComentarios(): Observable<Comentarios> {
+    return this.http.get<Comentarios>('http://localhost:8000/api/comentarios');
   }
 
 }

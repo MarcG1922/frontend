@@ -37,3 +37,20 @@ export interface UsuarioMember {
     comentarios: any[];
 }
 
+export interface Comentarios {
+    "@context": string;
+    "@id": string;
+    "@type": string;
+    totalItems: number;
+    member: ComentarioMember[];
+}
+
+export interface ComentarioMember {
+    "@id": string;
+    "@type": string;
+    id: number;
+    comentario: string;
+    usuario: string;
+    evento: string;
+    fecha: Date;
+}
