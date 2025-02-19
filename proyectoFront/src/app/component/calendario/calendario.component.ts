@@ -8,6 +8,8 @@ import {
   CalendarMonthViewComponent
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
+import { RequestService } from '../../services/request.service';
+import { EventoMember } from '../../models/response.interface';
 
 interface CalendarDayViewEvent {
   day: {
@@ -28,37 +30,52 @@ export class CalendarioComponent {
   CalendarView = CalendarView;
   viewDate: Date = new Date();
   refresh = new Subject<void>();
+  events: CalendarEvent[] = [];
 
-  events: CalendarEvent[] = [
-    {
-      title: 'Clase de Patinaje Nivel 1',
-      start: new Date(new Date().setHours(10, 0)),
-      end: new Date(new Date().setHours(11, 30)),
-      color: { primary: '#ad2121', secondary: '#FAE3E3' }
-    },
-    {
-      title: 'Clase de Patinaje Nivel 2',
-      start: new Date(new Date().setHours(14, 0)),
-      end: new Date(new Date().setHours(15, 30)),
-      color: { primary: '#1e90ff', secondary: '#D1E8FF' }
-    },
-    {
-      title: 'Entrenamiento Avanzado',
-      start: new Date(new Date().setHours(16, 0)),
-      end: new Date(new Date().setHours(17, 30)),
-      color: { primary: '#28a745', secondary: '#DFF0D8' }
-    }
-  ];
+  constructor(private requestService: RequestService) {
+    this.loadEvents();
+  }
+
+  private loadEvents(): void {
+    this.requestService.getEventos().subscribe({
+      next: (response) => {
+        this.events = response.member.map(evento => this.transformEventoToCalendarEvent(evento));
+        this.refresh.next();
+      },
+      error: (error) => {
+        console.error('Error al cargar eventos:', error);
+      }
+    });
+  }
+
+  private transformEventoToCalendarEvent(evento: EventoMember): CalendarEvent {
+    return {
+      start: new Date(evento.fecha),
+      title: evento.titulo,
+      color: {
+        primary: '#1e90ff',
+        secondary: '#D1E8FF'
+      },
+      meta: {
+        descripcion: evento.descripcion,
+        imagen: evento.imagen
+      }
+    };
+  }
 
   setView(view: CalendarView) {
     this.view = view;
   }
 
-  handleEventClick(event: { event: CalendarEvent }): void {
-    console.log('Evento seleccionado:', event.event.title);
+  handleEventClick({ event }: { event: CalendarEvent }): void {
+    console.log('Evento seleccionado:', event);
+    alert(`
+      Evento: ${event.title}
+      Descripción: ${event.meta.descripcion}
+    `);
   }
 
-  handleTimeClick(event: { date: Date }): void {
+  handleTimeClick(event: any): void {
     console.log('Hora seleccionada:', event.date);
   }
 
