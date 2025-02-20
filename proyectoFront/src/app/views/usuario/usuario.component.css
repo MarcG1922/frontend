@@ -14,3 +14,24 @@ h2 {
     font-weight: bold;
     margin-bottom: 10px;
   }
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    width: 100%;
+}
+
+.loading-container i {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.loading-container p {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0;
+}

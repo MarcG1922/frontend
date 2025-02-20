@@ -29,16 +29,17 @@ export class AdministradorComponent {
   public case: string = 'one';
   public errorMessage: string = '';
   isLoggedIn : boolean = false;
-  public cards: string[] = ["CARGANDO EVENTO", "CARGANDO EVENTO", "CARGANDO EVENTO", "CARGANDO EVENTO", "CARGANDO EVENTO", "CARGANDO EVENTO"];
-  public text: string[] = [" ", " ", " ", " ", " ", " "];
+  public cards: string[] = [];
+  public text: string[] = [];
   public name: string[] = ["Ana García", "Carlos Ruiz", "Laura Martín", "Pedro Sánche"];
   public speed: string[] = ["Patinaje Artístico", "Velocidad", "Iniciacion", "Freestyle"];
-  public competitionsImageUrl: string[] = Array(6).fill('https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif');
+  public competitionsImageUrl: string[] = [];
   public instructorsImageUrl: string = 'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg';
   public eventIds: number[] = [];
-  public eventDates: string[] = Array(6).fill('Cargando fecha...');
-  public eventLocations: string[] = Array(6).fill('Cargando ubicación...');
-  public eventTimes: string[] = Array(6).fill('Cargando hora...');
+  public eventDates: string[] = [];
+  public eventLocations: string[] = [];
+  public eventTimes: string[] = [];
+  isLoadingEvents: boolean = true;
 
   public loginForm = new FormGroup({
     email: new FormControl('', { nonNullable: true }),
@@ -54,6 +55,7 @@ export class AdministradorComponent {
 
   showAddModal: boolean = false;
   showCreateModal: boolean = false;
+  isLoading: boolean = false;
 
   ngOnInit() {
     this.isLoggedIn = Boolean(sessionStorage.getItem('isLoggedIn'));
@@ -61,6 +63,7 @@ export class AdministradorComponent {
   }
 
   public getResponse(): void {
+    this.isLoadingEvents = true;
     this.service.getEventos().subscribe({
       next: (response) => {
         this.cards = response.member.map(member => member.titulo);
@@ -70,9 +73,11 @@ export class AdministradorComponent {
         this.eventDates = response.member.map(member => new Date(member.fecha).toLocaleDateString());
         this.eventLocations = response.member.map(member => member.ubicacion || 'Sin ubicación');
         this.eventTimes = response.member.map(member => new Date(member.fecha).toLocaleTimeString());
+        this.isLoadingEvents = false;
       },
       error: (error) => {
         console.error('Error al obtener eventos:', error);
+        this.isLoadingEvents = false;
       }
     });
   }
@@ -154,6 +159,7 @@ export class AdministradorComponent {
   }
 
   onSaveNewEvent(eventData: any) {
+    this.isLoading = true;
     const newEvento = {
       titulo: eventData.titulo || "Nuevo Evento",
       descripcion: eventData.descripcion || "Descripción del nuevo evento",
@@ -166,10 +172,12 @@ export class AdministradorComponent {
     this.service.createEvento(newEvento).subscribe({
       next: (response) => {
         this.showCreateModal = false;
+        this.isLoading = false;
         alert('Evento creado con éxito');
         this.getResponse();
       },
       error: (error) => {
+        this.isLoading = false;
         console.error('Error al crear el evento:', error);
         alert('Error al crear el evento');
       }

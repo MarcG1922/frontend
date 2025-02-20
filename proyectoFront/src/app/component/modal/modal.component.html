@@ -7,6 +7,11 @@
                 <button class="close-button" (click)="onClose()">×</button>
             </div>
             <div class="modal-body">
+                @if (isLoading) {
+                    <div class="loading-overlay">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                }
                 @if (isEditing) {
                     <div class="edit-form">
                         <div class="form-group">

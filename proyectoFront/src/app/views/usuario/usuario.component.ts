@@ -9,6 +9,7 @@ import { InfoComponent } from '../../component/info/info.component';
 
 @Component({
   selector: 'app-usuario',
+  standalone: true,
   imports: [
     JumbotronComponent, 
     FormComponent, 
@@ -22,20 +23,29 @@ import { InfoComponent } from '../../component/info/info.component';
 })
 export class UsuarioComponent {
 
-  public cards: string[] = ["Campeonato autonómico", "Sesión de perfeccionamiento", "Trofeo Navideño Piruetes", "Festival de fin de curso", "Trofeo de Manises", "Trofeo Somnis Sobre Rodes"];
-  public text: string[] = ["Descripción 1", "Descripción 2", "Descripción 3", "Descripción 4", "Descripción 5", "Descripción 6"];
+  public cards: string[] = [];
+  public text: string[] = [];
   public name: string[] = ["Ana García", "Carlos Ruiz", "Laura Martín", "Pedro Sánche"];
   public speed: string[] = ["Patinaje Artístico", "Velocidad", "Iniciacion", "Freestyle"];
-  public competitionsImageUrl: string[] = ['https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg'];
+  public competitionsImageUrl: string[] = [];
   public instructorsImageUrl: string = 'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg';
+  public isLoadingEvents: boolean = true;
 
   public constructor(public service: RequestService) { }
 
   public getResponse(): void {
-    this.service.getEventos().subscribe((response) => {
-      this.cards = response.member.map((member) => member.titulo);
-      this.text = response.member.map((member) => member.descripcion);
-      this.competitionsImageUrl = response.member.map((member) => member.imagen);
+    this.isLoadingEvents = true;
+    this.service.getEventos().subscribe({
+      next: (response) => {
+        this.cards = response.member.map((member) => member.titulo);
+        this.text = response.member.map((member) => member.descripcion);
+        this.competitionsImageUrl = response.member.map((member) => member.imagen);
+        this.isLoadingEvents = false;
+      },
+      error: (error) => {
+        console.error('Error al obtener eventos:', error);
+        this.isLoadingEvents = false;
+      }
     });
   }
 

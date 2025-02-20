@@ -224,4 +224,22 @@
 textarea {
     resize: vertical;
     min-height: 100px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-overlay i {
+    font-size: 3rem;
+    color: #007bff;
 } 

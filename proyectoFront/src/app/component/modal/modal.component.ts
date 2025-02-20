@@ -18,6 +18,7 @@ export class ModalComponent {
   @Input() eventLocation: string = '';
   @Input() eventTime: string = '';
   @Input() isEditing: boolean = false;
+  @Input() isLoading: boolean = false;
   @Input() initialData: any;
   
   editedData = {

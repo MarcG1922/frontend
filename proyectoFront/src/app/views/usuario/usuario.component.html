@@ -12,13 +12,25 @@
             <p>Descubre en qué competencias participamos a lo largo del curso</p>
         </div>
         <div class="content">
-            <div class="grid">
-                <!-- CARD -->
-                @for (item of cards; track item; let i = $index) {
-                <app-card [cards]="cards[i]" [text]="text[i]"
-                    [photo]="'url(' + competitionsImageUrl[i] + ')'"></app-card>
+            <section class="competitions-section">
+                <h2>Próximos Eventos</h2>
+                @if (isLoadingEvents) {
+                    <div class="loading-container">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Cargando eventos...</p>
+                    </div>
+                } @else {
+                    <div class="grid">
+                        @for (item of cards; track item; let i = $index) {
+                            <app-card 
+                                [cards]="cards[i]" 
+                                [text]="text[i]"
+                                [photo]="'url(' + competitionsImageUrl[i] + ')'">
+                            </app-card>
+                        }
+                    </div>
                 }
-            </div>
+            </section>
         </div>
     </section>
     <hr class="divider">
