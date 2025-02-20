@@ -23,15 +23,12 @@ export class AdministradorComponent {
   public text: string[] = [" ", " ", " ", " ", " ", " "];
   public name: string[] = ["Ana García", "Carlos Ruiz", "Laura Martín", "Pedro Sánche"];
   public speed: string[] = ["Patinaje Artístico", "Velocidad", "Iniciacion", "Freestyle"];
-  public competitionsImageUrl: string[] = ['https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
-    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
-    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
-    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
-    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
-    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg' 
-  ];
+  public competitionsImageUrl: string[] = Array(6).fill('https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif');
   public instructorsImageUrl: string = 'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg';
   public eventIds: number[] = [];
+  public eventDates: string[] = Array(6).fill('Cargando fecha...');
+  public eventLocations: string[] = Array(6).fill('Cargando ubicación...');
+  public eventTimes: string[] = Array(6).fill('Cargando hora...');
 
   public loginForm = new FormGroup({
     email: new FormControl('', { nonNullable: true }),
@@ -44,6 +41,9 @@ export class AdministradorComponent {
     phone: new FormControl('', { nonNullable: true }),
     password: new FormControl('', { nonNullable: true })
   });
+
+  showAddModal: boolean = false;
+
   ngOnInit() {
     this.isLoggedIn = Boolean(sessionStorage.getItem('isLoggedIn'));
     this.getResponse();
@@ -56,6 +56,9 @@ export class AdministradorComponent {
         this.text = response.member.map(member => member.descripcion);
         this.competitionsImageUrl = response.member.map(member => member.imagen);
         this.eventIds = response.member.map(member => member.id);
+        this.eventDates = response.member.map(member => new Date(member.fecha).toLocaleDateString());
+        this.eventLocations = response.member.map(member => member.ubicacion || 'Sin ubicación');
+        this.eventTimes = response.member.map(member => new Date(member.fecha).toLocaleTimeString());
       },
       error: (error) => {
         console.error('Error al obtener eventos:', error);
@@ -133,5 +136,27 @@ export class AdministradorComponent {
 
   public goToLogin(): void {
     this.case = 'one';
+  }
+
+  onAddEvent() {
+    const newEvento = {
+      titulo: "Nuevo Evento",
+      descripcion: "Descripción del nuevo evento",
+      imagen: "https://via.placeholder.com/300",
+      fecha: new Date().toISOString(),
+      ubicacion: "Por determinar",
+      comentarios: []
+    };
+
+    this.service.createEvento(newEvento).subscribe({
+      next: (response) => {
+        alert('Evento creado con éxito');
+        this.getResponse(); // Recargar la lista de eventos
+      },
+      error: (error) => {
+        console.error('Error al crear el evento:', error);
+        alert('Error al crear el evento');
+      }
+    });
   }
 }

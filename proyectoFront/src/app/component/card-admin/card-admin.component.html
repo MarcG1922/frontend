@@ -1,24 +1,29 @@
+<!-- Contenido de la tarjeta -->
 <div class="card">
-    <div style="height: 200px;" class="photo" [ngStyle]="{'backgroundImage': photo}">
-        <button class="delete-btn" (click)="onDelete()">
-            <i class="fas fa-trash"></i> Eliminar
-        </button>
-    </div>
-    <div class="footer" (click)="toggleModal()">
-        <div class="titles">
-            <h3>{{cards}}</h3>
-            <p>{{text}}</p>
-        </div>
-    </div>
+    <h3>{{cards}}</h3>
+    <p>{{text}}</p>
+    @if (photo) {
+        <img [src]="photo" alt="Evento">
+    }
+    <p>Fecha: {{eventDate}}</p>
+    <p>Ubicación: {{eventLocation}}</p>
+    <p>Hora: {{eventTime}}</p>
+    
+    <button (click)="onEdit()">Editar</button>
+    <button (click)="onDelete()">Eliminar</button>
 </div>
 
-<app-modal
-    [show]="showModal"
-    [title]="cards"
-    [description]="text"
-    [imageUrl]="'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg'"
-    [eventDate]="'15 de Mayo, 2024'"
-    [eventLocation]="'Polideportivo Municipal de Manises'"
-    [eventTime]="'10:00 AM'"
-    (closeModal)="toggleModal()">
-</app-modal>
+@if (showModal) {
+    <app-modal 
+        [show]="showModal"
+        [title]="cards"
+        [description]="text"
+        [imageUrl]="photo"
+        [eventDate]="eventDate"
+        [eventLocation]="eventLocation"
+        [eventTime]="eventTime"
+        [isEditing]="isEditing"
+        (closeModal)="toggleModal()"
+        (saveEdit)="onSaveEdit($event)">
+    </app-modal>
+}

@@ -1,22 +1,53 @@
-<div class="modal" *ngIf="show">
-    <div class="modal-overlay" (click)="onClose()"></div>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>{{title}}</h2>
-            <button class="close-button" (click)="onClose()">×</button>
-        </div>
-        <div class="modal-body">
-            <img [src]="imageUrl" [alt]="title">
-            <div class="modal-text">
-                <h3>Descripción del evento</h3>
-                <p>{{description}}</p>
-                <div class="event-details">
-                    <p><strong>Fecha:</strong> {{eventDate}}</p>
-                    <p><strong>Lugar:</strong> {{eventLocation}}</p>
-                    <p><strong>Hora:</strong> {{eventTime}}</p>
-                </div>
+@if (show) {
+    <div class="modal">
+        <div class="modal-overlay" (click)="onClose()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{{isEditing ? 'Editar Evento' : title}}</h2>
+                <button class="close-button" (click)="onClose()">×</button>
+            </div>
+            <div class="modal-body">
+                @if (isEditing) {
+                    <div class="edit-form">
+                        <div class="form-group">
+                            <label>Título:</label>
+                            <input type="text" [(ngModel)]="editedData.titulo" [value]="title">
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción:</label>
+                            <textarea [(ngModel)]="editedData.descripcion" [value]="description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>URL de la imagen:</label>
+                            <input type="text" [(ngModel)]="editedData.imagen" [value]="imageUrl">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha:</label>
+                            <input type="text" [(ngModel)]="editedData.fecha" [value]="eventDate">
+                        </div>
+                        <div class="form-group">
+                            <label>Ubicación:</label>
+                            <input type="text" [(ngModel)]="editedData.ubicacion" [value]="eventLocation">
+                        </div>
+                        <div class="form-group">
+                            <label>Hora:</label>
+                            <input type="text" [(ngModel)]="editedData.hora" [value]="eventTime">
+                        </div>
+                        <button class="save-btn" (click)="onSave()">Guardar Cambios</button>
+                    </div>
+                } @else {
+                    <img [src]="imageUrl" [alt]="title">
+                    <div class="modal-text">
+                        <h3>Descripción del evento</h3>
+                        <p>{{description}}</p>
+                        <div class="event-details">
+                            <p><strong>Fecha:</strong> {{eventDate}}</p>
+                            <p><strong>Lugar:</strong> {{eventLocation}}</p>
+                            <p><strong>Hora:</strong> {{eventTime}}</p>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
-
     </div>
-</div> 
+} 

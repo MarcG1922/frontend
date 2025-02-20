@@ -15,6 +15,7 @@ export interface EventoMember {
     imagen: string;
     comentarios: any[];
     fecha: Date;
+    ubicacion: string;
 }
 
 export interface Usuarios {

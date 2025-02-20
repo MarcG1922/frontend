@@ -1,7 +1,29 @@
-.delete-btn {
+.admin-buttons {
     position: absolute;
     top: 10px;
     right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn {
+    padding: 8px 16px;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn {
     padding: 8px 16px;
     background-color: #dc3545;
     color: white;
