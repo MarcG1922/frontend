@@ -1,6 +1,19 @@
+@if (isLoggedIn == true){
 
 
-@if (isLoggedIn == true){}@else{
+
+    <div class="content">
+        <div class="grid">
+            <!-- CARD -->
+            @for (item of cards; track item; let i = $index) {
+            <app-card-admin [cards]="cards[i]" [text]="text[i]"
+                [photo]="'url(' + competitionsImageUrl[i] + ')'"
+                [eventoId]="eventIds[i]"></app-card-admin>
+
+            }
+        </div>
+    </div>
+}@else{
 
 <div class="container">
     @if (case === 'one') {

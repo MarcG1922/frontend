@@ -13,6 +13,7 @@ export class HeaderComponent {
   isMenuOpen = false;
   logoPath = 'patinaje.jpg'; 
   isLoggedIn : boolean = false;
+  
 
   // Método para alternar el menú
   toggleMenu() {

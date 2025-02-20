@@ -3,10 +3,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RequestService } from '../../services/request.service';
 import { LoginComponent } from '../../component/login/login.component';
 import { RegisterComponent } from '../../component/register/register.component';
-
+import { CardComponent } from '../../component/card/card.component';
+import { CardAdminComponent } from '../../component/card-admin/card-admin.component';
 @Component({
   selector: 'app-administrador',
-  imports: [ReactiveFormsModule, LoginComponent, RegisterComponent],
+  imports: [ReactiveFormsModule, LoginComponent, RegisterComponent, CardComponent, CardAdminComponent],
   templateUrl: './administrador.component.html',
   styleUrl: './administrador.component.css'
 })
@@ -18,6 +19,19 @@ export class AdministradorComponent {
   public case: string = 'one';
   public errorMessage: string = '';
   isLoggedIn : boolean = false;
+  public cards: string[] = ["CARGANDO EVENTO", "CARGANDO EVENTO", "CARGANDO EVENTO", "CARGANDO EVENTO", "CARGANDO EVENTO", "CARGANDO EVENTO"];
+  public text: string[] = [" ", " ", " ", " ", " ", " "];
+  public name: string[] = ["Ana García", "Carlos Ruiz", "Laura Martín", "Pedro Sánche"];
+  public speed: string[] = ["Patinaje Artístico", "Velocidad", "Iniciacion", "Freestyle"];
+  public competitionsImageUrl: string[] = ['https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
+    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
+    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
+    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
+    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg',
+    'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg' 
+  ];
+  public instructorsImageUrl: string = 'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg';
+  public eventIds: number[] = [];
 
   public loginForm = new FormGroup({
     email: new FormControl('', { nonNullable: true }),
@@ -32,8 +46,23 @@ export class AdministradorComponent {
   });
   ngOnInit() {
     this.isLoggedIn = Boolean(sessionStorage.getItem('isLoggedIn'));
-    console.log();  
-   }
+    this.getResponse();
+  }
+
+  public getResponse(): void {
+    this.service.getEventos().subscribe({
+      next: (response) => {
+        this.cards = response.member.map(member => member.titulo);
+        this.text = response.member.map(member => member.descripcion);
+        this.competitionsImageUrl = response.member.map(member => member.imagen);
+        this.eventIds = response.member.map(member => member.id);
+      },
+      error: (error) => {
+        console.error('Error al obtener eventos:', error);
+      }
+    });
+  }
+
   public onLoginSubmit(): void {
     this.service.getUsuarios().subscribe({
       next: (response) => {
