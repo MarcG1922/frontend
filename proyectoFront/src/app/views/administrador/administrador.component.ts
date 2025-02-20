@@ -173,7 +173,6 @@ export class AdministradorComponent {
       next: (response) => {
         this.showCreateModal = false;
         this.isLoading = false;
-        alert('Evento creado con éxito');
         this.getResponse();
       },
       error: (error) => {

@@ -243,3 +243,15 @@ textarea {
     font-size: 3rem;
     color: #007bff;
 } 
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+  }

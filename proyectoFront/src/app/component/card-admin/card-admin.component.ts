@@ -30,6 +30,11 @@ export class CardAdminComponent {
     this.showModal = !this.showModal;
   }
 
+  public clickModal() {
+    this.showModal = !this.showModal;
+
+  }
+
   onEdit() {
     this.isEditing = true;
     this.toggleModal();
@@ -52,7 +57,6 @@ export class CardAdminComponent {
         console.log('Respuesta exitosa:', response);
         this.showModal = false;
         this.isEditing = false;
-        alert('Evento actualizado con éxito');
         window.location.reload(); // Forzar recarga para ver los cambios
       },
       error: (error) => {
@@ -66,7 +70,7 @@ export class CardAdminComponent {
     if (confirm('¿Estás seguro de que deseas eliminar este evento?')) {
       this.requestService.deleteEvento(this.eventoId).subscribe({
         next: () => {
-          alert('Evento eliminado con éxito');
+          window.location.reload();
           this.eventUpdated.emit();
         },
         error: (error) => {

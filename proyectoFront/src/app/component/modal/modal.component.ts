@@ -32,6 +32,29 @@ export class ModalComponent {
   
   @Output() closeModal = new EventEmitter<void>();
   @Output() saveEdit = new EventEmitter<any>();
+  formSubmitted = false;
+
+  onSave() {
+    this.formSubmitted = true; // Marcar el formulario como enviado
+
+    // Verificar si todos los campos están llenos
+    if (
+      this.editedData.titulo &&
+      this.editedData.descripcion &&
+      this.editedData.imagen &&
+      this.editedData.fecha &&
+      this.editedData.ubicacion &&
+      this.editedData.hora
+    ) {
+      // Si todos los campos están llenos, proceder a guardar los cambios
+      console.log('Datos guardados:', this.editedData);
+      this.saveEdit.emit(this.editedData);
+      // Aquí podrías agregar la lógica para guardar los datos en tu backend o realizar otras acciones
+    } else {
+      console.log('Por favor, rellena todos los campos.');
+    }
+}
+
 
   ngOnInit() {
     if (this.initialData) {
@@ -50,10 +73,5 @@ export class ModalComponent {
 
   onClose() {
     this.closeModal.emit();
-  }
-
-  onSave() {
-    console.log('Enviando datos editados:', this.editedData);
-    this.saveEdit.emit(this.editedData);
   }
 } 

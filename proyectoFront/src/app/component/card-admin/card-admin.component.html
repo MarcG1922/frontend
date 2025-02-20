@@ -1,6 +1,6 @@
 <!-- Contenido de la tarjeta -->
 <div class="card">
-    <h3>{{cards}}</h3>
+    <h3 (click)="clickModal()">{{cards}}</h3>
     <p>{{text}}</p>
     @if (photo) {
         <img [src]="photo" alt="Evento">
@@ -10,7 +10,7 @@
     <p>Hora: {{eventTime}}</p>
     
     <button (click)="onEdit()">Editar</button>
-    <button (click)="onDelete()">Eliminar</button>
+    <button class="delete" (click)="onDelete()">Eliminar</button>
 </div>
 
 @if (showModal) {
