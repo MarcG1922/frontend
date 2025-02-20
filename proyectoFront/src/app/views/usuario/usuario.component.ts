@@ -27,7 +27,11 @@ export class UsuarioComponent {
   public name: string[] = ["Ana García", "Carlos Ruiz", "Laura Martín", "Pedro Sánche"];
   public speed: string[] = ["Patinaje Artístico", "Velocidad", "Iniciacion", "Freestyle"];
   public competitionsImageUrl: string[] = ['https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg'];
-  public instructorsImageUrl: string = 'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg';
+  public instructorsImageUrl: string[] = ['https://ton.x.com/i/ton/data/grok-attachment/1892493414576402432',
+    'https://ton.x.com/i/ton/data/grok-attachment/1892491998067642368',
+    'https://ton.x.com/i/ton/data/grok-attachment/1892495149394989056',
+    'https://ton.x.com/i/ton/data/grok-attachment/1892491998189297664'
+  ];
 
   public constructor(public service: RequestService) { }
 

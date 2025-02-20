@@ -29,7 +29,7 @@
         </div>
         <div class="instructores-container">
             @for (instructor of name; track instructor; let i = $index) {
-            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="instructorsImageUrl">
+            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="instructorsImageUrl[i]">
             </app-instructores>
             }
         </div>

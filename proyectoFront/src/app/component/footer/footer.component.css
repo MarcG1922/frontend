@@ -11,8 +11,9 @@ a.btn:hover {
   footer {
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 10px;
       margin-top: 50px;
+      background: rgb(2, 2, 17); 
   }
   
   .map-container {
@@ -47,7 +48,7 @@ a.btn:hover {
 }
 
 .instagram:hover {
-    background-color: #E4405F;
+    background-color: #ab4d5e;
 }
 
 .twitter:hover {
