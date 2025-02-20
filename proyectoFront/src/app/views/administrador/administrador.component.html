@@ -18,6 +18,21 @@
                 </app-card-admin>
             }
         </div>
+
+        @if (showCreateModal) {
+            <app-modal
+                [show]="showCreateModal"
+                [isEditing]="true"
+                [title]="'Crear Nuevo Evento'"
+                [description]="''"
+                [imageUrl]="''"
+                [eventDate]="''"
+                [eventLocation]="''"
+                [eventTime]="''"
+                (closeModal)="closeCreateModal()"
+                (saveEdit)="onSaveNewEvent($event)">
+            </app-modal>
+        }
     </div>
 }@else{
 

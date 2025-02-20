@@ -5,9 +5,19 @@ import { LoginComponent } from '../../component/login/login.component';
 import { RegisterComponent } from '../../component/register/register.component';
 import { CardComponent } from '../../component/card/card.component';
 import { CardAdminComponent } from '../../component/card-admin/card-admin.component';
+import { ModalComponent } from '../../component/modal/modal.component';
+
 @Component({
   selector: 'app-administrador',
-  imports: [ReactiveFormsModule, LoginComponent, RegisterComponent, CardComponent, CardAdminComponent],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule, 
+    LoginComponent, 
+    RegisterComponent, 
+    CardComponent, 
+    CardAdminComponent,
+    ModalComponent
+  ],
   templateUrl: './administrador.component.html',
   styleUrl: './administrador.component.css'
 })
@@ -43,6 +53,7 @@ export class AdministradorComponent {
   });
 
   showAddModal: boolean = false;
+  showCreateModal: boolean = false;
 
   ngOnInit() {
     this.isLoggedIn = Boolean(sessionStorage.getItem('isLoggedIn'));
@@ -139,24 +150,33 @@ export class AdministradorComponent {
   }
 
   onAddEvent() {
+    this.showCreateModal = true;
+  }
+
+  onSaveNewEvent(eventData: any) {
     const newEvento = {
-      titulo: "Nuevo Evento",
-      descripcion: "Descripción del nuevo evento",
-      imagen: "https://via.placeholder.com/300",
+      titulo: eventData.titulo || "Nuevo Evento",
+      descripcion: eventData.descripcion || "Descripción del nuevo evento",
+      imagen: eventData.imagen || "https://via.placeholder.com/300",
       fecha: new Date().toISOString(),
-      ubicacion: "Por determinar",
+      ubicacion: eventData.ubicacion || "Por determinar",
       comentarios: []
     };
 
     this.service.createEvento(newEvento).subscribe({
       next: (response) => {
+        this.showCreateModal = false;
         alert('Evento creado con éxito');
-        this.getResponse(); // Recargar la lista de eventos
+        this.getResponse();
       },
       error: (error) => {
         console.error('Error al crear el evento:', error);
         alert('Error al crear el evento');
       }
     });
+  }
+
+  closeCreateModal() {
+    this.showCreateModal = false;
   }
 }

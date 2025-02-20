@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
 export class ModalComponent {
   @Input() show: boolean = false;
   @Input() title: string = '';
-  @Input() imageUrl: string = '';
   @Input() description: string = '';
+  @Input() imageUrl: string = '';
   @Input() eventDate: string = '';
   @Input() eventLocation: string = '';
   @Input() eventTime: string = '';
