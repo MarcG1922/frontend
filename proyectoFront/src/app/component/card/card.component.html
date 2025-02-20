@@ -2,21 +2,23 @@
     <div style="height: 200px;" class="photo" [ngStyle]="{'backgroundImage': photo}">
     </div>
     <div class="footer">
-        <div class="titles">
-            <h3>{{cards}}</h3>
-            <p>{{text}}</p>
-        </div>
+      <div class="titles">
+        <h3>{{cards}}</h3>
+        <p>{{text}}</p>
+      </div>
     </div>
 </div>
 
 <app-modal
-    [show]="showModal"
-    [title]="cards"
-    [description]="text"
-    [imageUrl]="'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg'"
-    [eventDate]="'15 de Mayo, 2024'"
-    [eventLocation]="'Polideportivo Municipal de Manises'"
-    [eventTime]="'10:00 AM'"
-    (closeModal)="toggleModal()"
-    (actionClick)="onActionClick()">
+  [show]="showModal"
+  [title]="cards"
+  [description]="text"
+  [imageUrl]="'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg'"
+  [eventDate]="'15 de Mayo, 2024'"
+  [eventLocation]="'Polideportivo Municipal de Manises'"
+  [eventTime]="'10:00 AM'"
+  [eventId]="id"
+  (closeModal)="toggleModal()"
+  (actionClick)="onActionClick()">
 </app-modal>
+

@@ -28,6 +28,7 @@ export class UsuarioComponent {
   public speed: string[] = ["Patinaje Artístico", "Velocidad", "Iniciacion", "Freestyle"];
   public competitionsImageUrl: string[] = ['https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg'];
   public instructorsImageUrl: string = 'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg';
+  public cardsId: number[] = [];
 
   public constructor(public service: RequestService) { }
 
@@ -36,9 +37,10 @@ export class UsuarioComponent {
       this.cards = response.member.map((member) => member.titulo);
       this.text = response.member.map((member) => member.descripcion);
       this.competitionsImageUrl = response.member.map((member) => member.imagen);
+      this.cardsId = response.member.map((member) => parseInt(member['@id'], 10));
     });
   }
-
+  
   public ngOnInit(): void {
     this.getResponse();
   }

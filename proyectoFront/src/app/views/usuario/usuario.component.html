@@ -15,9 +15,14 @@
             <div class="grid">
                 <!-- CARD -->
                 @for (item of cards; track item; let i = $index) {
-                <app-card [cards]="cards[i]" [text]="text[i]"
-                    [photo]="'url(' + competitionsImageUrl[i] + ')'"></app-card>
-                }
+                    <app-card 
+                      [id]="cardsId[i]" 
+                      [cards]="cards[i]" 
+                      [text]="text[i]"
+                      [photo]="'url(' + competitionsImageUrl[i] + ')'">
+                    </app-card>
+                  }
+                  
             </div>
         </div>
     </section>

@@ -42,4 +42,9 @@ export class RequestService {
     return this.http.get<Comentarios>('http://localhost:8000/api/comentarios');
   }
 
+  public getComentariosByEventoId(eventoId: string): Observable<Comentarios> {
+    return this.http.get<Comentarios>(`http://localhost:8000/api/comentarios?eventoId=${eventoId}`);
+  }
+  
+
 }

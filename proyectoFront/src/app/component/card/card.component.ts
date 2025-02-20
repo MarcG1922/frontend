@@ -10,9 +10,11 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+  @Input() id: number = 0;
   @Input() cards: string = '';
   @Input() text: string = '';
   @Input() photo: string = 'url(https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg)';
+  @Input() comentarios: string[] = [];
 
   showModal: boolean = false;
 
@@ -22,6 +24,5 @@ export class CardComponent {
 
   onActionClick() {
     console.log('Inscripción solicitada');
-    // Aquí iría la lógica de inscripción
   }
 }
