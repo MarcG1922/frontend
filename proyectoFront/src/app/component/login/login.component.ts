@@ -33,6 +33,7 @@ export class LoginComponent {
           // Guardar datos en sessionStorage
           sessionStorage.setItem('currentUser', JSON.stringify(user));
           sessionStorage.setItem('isLoggedIn', 'true');
+          console.log(user);
           
           // Guardar en cookies
           this.cookieService.set('userData', JSON.stringify(user), 7);

@@ -44,7 +44,7 @@ export class CardAdminComponent {
     const formattedData = {
       "titulo": editedData.titulo || this.cards,
       "descripcion": editedData.descripcion || this.text,
-      "imagen": this.formatImageUrl(editedData.imagen) || this.formatImageUrl(this.photo),
+      "imagen": editedData.photo || this.photo,
       "fecha": new Date().toISOString(),
       "ubicacion": editedData.ubicacion || this.eventLocation,
       "comentarios": []

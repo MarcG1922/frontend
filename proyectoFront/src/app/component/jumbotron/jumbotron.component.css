@@ -18,7 +18,7 @@ h3 a{
   }
   
   .jumbotron .btn-primary {
-    background-color: rgb(2, 2, 17);
+    background-color: #2100c4;
     border-color: #2100c4;
   }
   
@@ -43,17 +43,18 @@ h3 a{
   justify-content: center;
   width: 205px;
   height: 170px;
-  background-image: url('https://images.pexels.com/photos/2341290/pexels-photo-2341290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   border-radius: 3px;
   margin-right: 20px;
   margin-bottom: 20px;
   box-shadow: 0 0px 10px rgba(71,71,71,.2);
-  -webkit-transition: .3s linear; 
-  -moz-transition:.3s linear; 
-  -ms-transition:.3s linear;
-  -o-transition:.3s linear;
+  background-color: #f5f5f5; /* Color gris clarito */
+  -webkit-transition: .3s linear;
+  -moz-transition: .3s linear;
+  -ms-transition: .3s linear;
+  -o-transition: .3s linear;
   transition: .3s linear;
 }
+
 
 .single-list-topics-content h2>a { margin: 13px 0;}
 
@@ -80,7 +81,7 @@ h3 a{
 
 .single-list-topics-content:hover {
     color: #fff;
-    background:  rgb(2, 2, 17);
+    background:  rgb(13, 13, 40);
     box-shadow: 0 5px 10px rgba(71, 71, 71, 0.4);
     transform: scale(1.05) translateY(-5px); /* Efecto de levantar ligeramente el elemento */
 }

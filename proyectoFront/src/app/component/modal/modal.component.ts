@@ -48,6 +48,7 @@ export class ModalComponent {
     ) {
       // Si todos los campos están llenos, proceder a guardar los cambios
       console.log('Datos guardados:', this.editedData);
+      console.log(this.editedData.imagen)
       this.saveEdit.emit(this.editedData);
       // Aquí podrías agregar la lógica para guardar los datos en tu backend o realizar otras acciones
     } else {

@@ -4,6 +4,7 @@ import { AdministradorComponent } from './views/administrador/administrador.comp
 import { SocioComponent } from './views/socio/socio.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
+import { PerfilComponent } from './views/perfil/perfil.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'usuario', pathMatch: 'full' },
@@ -12,5 +13,6 @@ export const routes: Routes = [
     { path: 'admin', component: AdministradorComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'perfil', component: PerfilComponent },
     
 ];

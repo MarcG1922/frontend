@@ -67,7 +67,7 @@ export class RegisterComponent {
             this.cookieService.set('isLoggedIn', 'true', 7);
             
             alert('Registro exitoso');
-            this.router.navigate(['/login']);
+            this.router.navigate(['/usuario']);
           },
           error: (error) => {
             console.error('Error al registrar usuario:', error);
