@@ -32,7 +32,6 @@ export class CardAdminComponent {
 
   public clickModal() {
     this.showModal = !this.showModal;
-
   }
 
   onEdit() {

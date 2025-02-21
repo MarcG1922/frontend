@@ -13,12 +13,12 @@
       <div class="line"></div>
     </div>
 
-    @if(isLoggedIn! === false) {
-      <div class="auth-buttons" [class.active]="isMenuOpen">
-        <a [routerLink]="['/login']" class="auth-button login">Log in</a>
-        <a [routerLink]="['/register']" class="auth-button register">Register</a>
-      </div>
-    } @else {
+    <div *ngIf="!isLoggedIn; else loggedInTemplate" class="auth-buttons" [class.active]="isMenuOpen">
+      <a [routerLink]="['/login']" class="auth-button login">Log in</a>
+      <a [routerLink]="['/register']" class="auth-button register">Register</a>
+    </div>
+    
+    <ng-template #loggedInTemplate>
       <div class="user-dropdown">
         <div class="user-icon" (click)="toggleDropdown()">
           <i class="fas fa-user"></i>
@@ -27,23 +27,24 @@
         <div class="dropdown-menu" *ngIf="isDropdownOpen">
           <div class="dropdown-header">
             <i class="fas fa-user-circle"></i>
-            <span>{{userName}}</span>
+            <span>{{ userName }}</span>
           </div>
           <a (click)="close()" [routerLink]="['/perfil']">
             <i class="fas fa-user"></i> Perfil
           </a>
-          @if(admin === true) {
+          <ng-container *ngIf="admin">
             <a (click)="close()" [routerLink]="['/admin']">
               <i class="fas fa-crown admin-icon"></i> Panel Admin
             </a>
-          }
+          </ng-container>
           <hr />
-          <a (click)="close()" (click)="logout()">
+          <a (click)="logout()">
             <i class="fas fa-sign-out-alt"></i> Cerrar sesión
           </a>
         </div>
       </div>
-    }
+    </ng-template>
+    
     
   </nav>
 </header>
