@@ -7,30 +7,40 @@
         <button class="close-button" (click)="onClose()">×</button>
       </div>
       <div class="modal-body">
-        <img [src]="imageUrl" [alt]="title">
-        <div class="modal-text">
-          <h3>Descripción del evento</h3>
-          <p>{{ description }}</p>
-          <div class="event-details">
-            <p><strong>Fecha:</strong> {{ eventDate }}</p>
-            <p><strong>Lugar:</strong> {{ eventLocation }}</p>
-            <p><strong>Hora:</strong> {{ eventTime }}</p>
+        @if (!isCreatingComment) {
+          <img [src]="imageUrl" [alt]="title">
+          <div class="modal-text">
+            <h3>Descripción del evento</h3>
+            <p>{{ description }}</p>
+            <div class="event-details">
+              <p><strong>Fecha:</strong> {{ eventDate }}</p>
+              <p><strong>Lugar:</strong> {{ eventLocation }}</p>
+              <p><strong>Hora:</strong> {{ eventTime }}</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="modal-comments">
-        <h3>Comentarios</h3>
-        @if (comentarios.length > 0) {
-          <ul>
-            @for (comentario of comentarios; track trackByComentarioId) {
-              <li>
-                <strong>{{ comentario.usuario }}</strong> - {{ comentario.comentario }}
-                <small>{{ comentario.fecha | date: 'short' }}</small>
-              </li>
-            }            
-          </ul>
+          
+          <div class="modal-comments">
+            <h3>Comentarios</h3>
+            @if (comentarios.length > 0) {
+              <ul>
+                @for (comentario of comentarios; track trackByComentarioId) {
+                  <li>
+                    <strong>{{ comentario.usuario }}</strong> - {{ comentario.comentario }}
+                    <small>{{ comentario.fecha | date: 'short' }}</small>
+                  </li>
+                }
+              </ul>
+            } @else {
+              <p>No hay comentarios para este evento.</p>
+            }
+
+            <button (click)="toggleCreateComment()">Crear Comentario</button>
+          </div>
         } @else {
-          <p>No hay comentarios para este evento.</p>
+          <div class="create-comment-form">
+            <textarea [formControl]="newCommentControl" placeholder="Escribe tu comentario..."></textarea>
+            <button (click)="submitComment()">Enviar</button>
+          </div>
         }
       </div>
     </div>

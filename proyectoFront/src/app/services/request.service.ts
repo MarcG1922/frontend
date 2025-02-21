@@ -10,6 +10,7 @@ import { Usuarios } from '../models/response.interface';
 export class RequestService {
 
   public apiUrl = 'http://localhost:8000/api/usuarios';
+  public comentariosUrl = 'http://localhost:8000/api/comentarios';
 
   constructor(public http: HttpClient) { }
 
@@ -39,12 +40,25 @@ export class RequestService {
   }
 
   public getComentarios(): Observable<Comentarios> {
-    return this.http.get<Comentarios>('http://localhost:8000/api/comentarios');
+    return this.http.get<Comentarios>(this.comentariosUrl);
   }
 
   public getComentariosByEventoId(eventoId: string): Observable<Comentarios> {
-    return this.http.get<Comentarios>(`http://localhost:8000/api/comentarios?eventoId=${eventoId}`);
+    return this.http.get<Comentarios>(`${this.comentariosUrl}?eventoId=${eventoId}`);
   }
-  
 
+  public createComentario(comentarioData: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/ld+json',
+    });
+
+    const body = {
+      comentario: comentarioData.comentario,
+      usuario: comentarioData.usuario,
+      evento: comentarioData.evento,
+      fecha: comentarioData.fecha,
+    };
+
+    return this.http.post(this.comentariosUrl, body, { headers });
+  }
 }

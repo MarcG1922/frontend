@@ -1,8 +1,8 @@
 <app-jumbotron></app-jumbotron>
 <div id="page">
-    <section id = "info">
+    <section id="info">
         <div class="section-header">
-        <h1>Sobre nosotros</h1>
+            <h1>Sobre nosotros</h1>
         </div>
         <app-info></app-info>
     </section>
@@ -13,16 +13,13 @@
         </div>
         <div class="content">
             <div class="grid">
-                <!-- CARD -->
+
                 @for (item of cards; track item; let i = $index) {
-                    <app-card 
-                      [id]="cardsId[i]" 
-                      [cards]="cards[i]" 
-                      [text]="text[i]"
-                      [photo]="'url(' + competitionsImageUrl[i] + ')'">
+                    <app-card [id]="cardsId[i]" [cards]="cards[i]" [text]="text[i]"
+                        [photo]="'url(' + competitionsImageUrl[i] + ')'" [comentarios]="comments[cardsId[i]] || []">
                     </app-card>
-                  }
-                  
+                }
+
             </div>
         </div>
     </section>
@@ -34,8 +31,8 @@
         </div>
         <div class="instructores-container">
             @for (instructor of name; track instructor; let i = $index) {
-            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="instructorsImageUrl">
-            </app-instructores>
+                <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="instructorsImageUrl">
+                </app-instructores>
             }
         </div>
     </section>
