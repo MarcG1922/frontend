@@ -14,29 +14,35 @@ export class CardAdminComponent {
   @Input() cards: string = '';
   @Input() text: string = '';
   @Input() photo: string = '';
-  @Input() eventoId: number = 0;
+  @Input() eventoId: string = '';
   @Input() eventDate: string = '';
   @Input() eventLocation: string = '';
   @Input() eventTime: string = '';
 
-  @Output() eventUpdated = new EventEmitter<void>();
-
-  showModal: boolean = false;
-  isEditing: boolean = false;
+  @Output() deleteEvent = new EventEmitter<string>();
+  
+  showModal = false;
+  isLoading = false;
 
   constructor(private requestService: RequestService) {}
 
+  onDelete() {
+    if (confirm('¿Estás seguro de que deseas eliminar este evento?')) {
+      const eventoIdNumber = parseInt(this.eventoId);
+      this.requestService.deleteEvento(eventoIdNumber).subscribe({
+        next: () => {
+          window.location.reload();
+        },
+        error: (error) => {
+          console.error('Error al eliminar:', error);
+          alert(`Error al eliminar: ${error.message}`);
+        }
+      });
+    }
+  }
+
   toggleModal() {
     this.showModal = !this.showModal;
-  }
-
-  public clickModal() {
-    this.showModal = !this.showModal;
-  }
-
-  onEdit() {
-    this.isEditing = true;
-    this.toggleModal();
   }
 
   onSaveEdit(editedData: any) {
@@ -49,35 +55,19 @@ export class CardAdminComponent {
       "comentarios": []
     };
 
-    console.log('Datos a enviar:', formattedData);
+    const eventoIdNumber = parseInt(this.eventoId);
 
-    this.requestService.updateEvento(this.eventoId, formattedData).subscribe({
+    this.requestService.updateEvento(eventoIdNumber, formattedData).subscribe({
       next: (response) => {
         console.log('Respuesta exitosa:', response);
         this.showModal = false;
-        this.isEditing = false;
-        window.location.reload(); // Forzar recarga para ver los cambios
+        window.location.reload();
       },
       error: (error) => {
         console.error('Error detallado:', error);
         alert(`Error al actualizar: ${error.status} - ${error.message}`);
       }
     });
-  }
-
-  onDelete() {
-    if (confirm('¿Estás seguro de que deseas eliminar este evento?')) {
-      this.requestService.deleteEvento(this.eventoId).subscribe({
-        next: () => {
-          window.location.reload();
-          this.eventUpdated.emit();
-        },
-        error: (error) => {
-          console.error('Error al eliminar:', error);
-          alert(`Error al eliminar: ${error.message}`);
-        }
-      });
-    }
   }
 
   private formatImageUrl(image: string): string {

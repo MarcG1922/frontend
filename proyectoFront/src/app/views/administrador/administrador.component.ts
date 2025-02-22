@@ -186,4 +186,8 @@ export class AdministradorComponent {
   closeCreateModal() {
     this.showCreateModal = false;
   }
+
+  get stringEventIds(): string[] {
+    return this.eventIds.map(id => id.toString());
+  }
 }
