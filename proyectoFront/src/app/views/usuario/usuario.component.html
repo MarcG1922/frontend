@@ -47,5 +47,13 @@
         </div>
     </section>
 </div>
-<app-calendario id="calendario"></app-calendario>
+<section id="calendario">
+    <div class="section-header">
+        <h1>Calendario de Eventos</h1>
+        <p>Consulta nuestros próximos eventos y actividades</p>
+    </div>
+    <div class="calendar-container">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+</section>
 <app-form></app-form>

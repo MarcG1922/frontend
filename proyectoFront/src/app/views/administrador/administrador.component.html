@@ -3,15 +3,20 @@
         <h1 style="text-align: center;">Panel de administrador</h1>
         <button class="btn-logout" (click)="logout()">Cerrar Sesión</button>
         
-        <!-- Calendario -->
-        <div class="calendar-container">
-            <full-calendar [options]="calendarOptions"></full-calendar>
-        </div>
+        <!-- Calendario eliminado -->
 
-        <div class="add-event-button">
-            <button class="btn-add" (click)="onAddEvent()">
-                <i class="fas fa-plus"></i> Añadir Nuevo Evento
-            </button>
+        <div class="events-actions">
+            <div class="add-event-button">
+                <button class="btn-add" (click)="onAddEvent()">
+                    <i class="fas fa-plus"></i> Añadir Nuevo Evento
+                </button>
+            </div>
+            
+            @if (showDeleteButton) {
+                <button class="btn-delete" (click)="deleteSelectedEvents()">
+                    <i class="fas fa-trash"></i> Eliminar Eventos Seleccionados ({{selectedEvents.length}})
+                </button>
+            }
         </div>
         
         @if (isLoadingEvents) {
@@ -29,7 +34,9 @@
                         [eventoId]="stringEventIds[i]"
                         [eventDate]="eventDates[i]"
                         [eventLocation]="eventLocations[i]"
-                        [eventTime]="eventTimes[i]">
+                        [eventTime]="eventTimes[i]"
+                        [showCheckbox]="true"
+                        (eventSelected)="onEventSelected($event)">
                     </app-card-admin>
                 }
             </div>

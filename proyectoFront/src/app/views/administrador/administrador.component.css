@@ -38,14 +38,14 @@ input {
 }
 
 input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px #007bff80;
+    border-color: #020211;
+    box-shadow: 0 0 5px rgba(2, 2, 17, 0.5);
 }
 
 .btn-primary {
     width: 100%;
     padding: 12px;
-    background-color: #007bff;
+    background-color: #020211;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -54,7 +54,7 @@ input:focus {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #020211;
 }
 
 .btn-secondary {
@@ -123,7 +123,7 @@ input:focus {
 }
 
 .btn-add {
-    background-color: #28a745;
+    background-color: #020211;
     color: white;
     padding: 12px 24px;
     border: none;
@@ -137,7 +137,7 @@ input:focus {
 }
 
 .btn-add:hover {
-    background-color: #218838;
+    background-color: #020211;
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
@@ -236,8 +236,8 @@ input:focus {
 }
 
 ::ng-deep .fc-button-primary {
-    background-color: #4CAF50 !important;
-    border-color: #4CAF50 !important;
+    background-color: #020211 !important;
+    border-color: #020211 !important;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 8px 16px !important;
     font-weight: 500;
@@ -246,8 +246,8 @@ input:focus {
 }
 
 ::ng-deep .fc-button-primary:hover {
-    background-color: #45a049 !important;
-    border-color: #45a049 !important;
+    background-color: #020211 !important;
+    border-color: #020211 !important;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
@@ -318,7 +318,37 @@ input:focus {
 }
 
 ::ng-deep .fc-h-event {
-    background-color: #4CAF50;
+    background-color: #020211;
     border: none;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.events-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.btn-delete i {
+    font-size: 1.1em;
 }

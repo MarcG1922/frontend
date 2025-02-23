@@ -1,5 +1,15 @@
 <!-- Contenido de la tarjeta -->
 <div class="card">
+    @if (showCheckbox) {
+        <div class="checkbox-container">
+            <input 
+                type="checkbox" 
+                [checked]="isSelected"
+                (click)="onCheckboxChange($event)"
+                class="event-checkbox"
+            >
+        </div>
+    }
     <div style="height: 200px;" class="photo" [ngStyle]="{'backgroundImage': photo}" (click)="toggleModal()">
         <div class="admin-controls" (click)="$event.stopPropagation()">
             <button class="btn-edit" (click)="toggleModal()">

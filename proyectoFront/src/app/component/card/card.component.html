@@ -9,14 +9,23 @@
     </div>
 </div>
 
-<app-modal
-    [show]="showModal"
-    [title]="cards"
-    [description]="text"
-    [imageUrl]="'https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg'"
-    [eventDate]="'15 de Mayo, 2024'"
-    [eventLocation]="'Polideportivo Municipal de Manises'"
-    [eventTime]="'10:00 AM'"
-    (closeModal)="toggleModal()"
-    (actionClick)="onActionClick()">
-</app-modal>
+@if (showInfoModal) {
+    <div class="modal-overlay" (click)="toggleModal()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <div class="modal-header" [ngStyle]="{'backgroundImage': photo}">
+                <button type="button" class="close-button" (click)="toggleModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <h2>{{cards}}</h2>
+                <div class="event-details">
+                    <p><i class="fas fa-calendar"></i> {{eventDate}}</p>
+                    <p><i class="fas fa-clock"></i> {{eventTime}}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> {{eventLocation}}</p>
+                </div>
+                <div class="event-description">
+                    <p>{{text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

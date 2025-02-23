@@ -1,6 +1,6 @@
 /* jumbotron.component.css */
 h3 a{
-  color:#343a3f;
+  color:#020211;
   text-decoration: none;
 }
   
@@ -18,13 +18,13 @@ h3 a{
   }
   
   .jumbotron .btn-primary {
-    background-color: #2100c4;
-    border-color: #2100c4;
+    background-color: #020211;
+    border-color: #020211;
   }
   
   .jumbotron .btn-primary:hover {
-    background-color: #2100c4;
-    border-color: #0056b3;
+    background-color: #020211;
+    border-color: #020211;
   }
 
 
@@ -63,7 +63,7 @@ h3 a{
 .single-list-topics-icon [class^="flaticon-"]:after,
 .single-list-topics-icon [class*=" flaticon-"]:after {
     font-size: 45px;
-    color: #343a3f;
+    color: #020211;
     transition: all 0.3s ease; /* Transición suave para los íconos */
 }
 
@@ -97,8 +97,8 @@ h3 a{
 }
 
 .custom-hover {
-  background-color: #007bff; /* Color inicial del botón */
-  border-color: #007bff; /* Color inicial del borde */
+  background-color: #020211; /* Color inicial del botón */
+  border-color: #020211; /* Color inicial del borde */
   color: white; /* Color inicial del texto */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
 }
@@ -107,24 +107,24 @@ h3 a{
 .custom-hover:hover {
   animation: none;
   transform: scale(1.05);
-  background-color: #0056b3;
-  border-color: #0056b3;
-  box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.5);
+  background-color: #020211;
+  border-color: #020211;
+  box-shadow: 0 0 15px 5px rgba(2, 2, 17, 0.5);
 }
 
 /* Definición de la animación */
 @keyframes pulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(2, 2, 17, 0.4);
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 0 20px 10px rgba(0, 123, 255, 0.4);
+    box-shadow: 0 0 20px 10px rgba(2, 2, 17, 0.4);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    box-shadow: 0 0 0 0 rgba(2, 2, 17, 0);
   }
 }
 
@@ -154,15 +154,15 @@ h3 a{
 @keyframes pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+        box-shadow: 0 0 0 0 rgba(2, 2, 17, 0.4);
     }
     50% {
         transform: scale(1.05);
-        box-shadow: 0 0 20px 10px rgba(0, 123, 255, 0.4);
+        box-shadow: 0 0 20px 10px rgba(2, 2, 17, 0.4);
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+        box-shadow: 0 0 0 0 rgba(2, 2, 17, 0);
     }
 }
 
@@ -170,7 +170,7 @@ h3 a{
 .custom-hover:hover {
     animation: none;
     transform: scale(1.05);
-    background-color: #0056b3;
-    border-color: #0056b3;
-    box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.5);
+    background-color: #020211;
+    border-color: #020211;
+    box-shadow: 0 0 15px 5px rgba(2, 2, 17, 0.5);
 }

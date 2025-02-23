@@ -108,6 +108,9 @@ export class AdministradorComponent implements OnInit {
     showNonCurrentDates: false
   };
 
+  selectedEvents: string[] = [];
+  showDeleteButton: boolean = false;
+
   ngOnInit() {
     this.isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
     if (this.isLoggedIn) {
@@ -245,53 +248,26 @@ export class AdministradorComponent implements OnInit {
 
   onSaveNewEvent(eventData: any) {
     this.isLoading = true;
-
-    // Validamos que tengamos todos los campos necesarios
-    if (!eventData.titulo || !eventData.descripcion) {
-      this.isLoading = false;
-      alert('Por favor, complete el título y la descripción');
-      return;
-    }
-
-    // Formateamos la fecha correctamente
-    const fecha = eventData.fecha && eventData.hora 
-      ? new Date(eventData.fecha + 'T' + eventData.hora).toISOString()
-      : new Date().toISOString();
-
-    const newEvento = {
-      titulo: eventData.titulo.trim(),
-      descripcion: eventData.descripcion.trim(),
-      imagen: eventData.imagen || "https://via.placeholder.com/300",
-      fecha: fecha,
-      ubicacion: eventData.ubicacion?.trim() || "Por determinar",
-      comentarios: []
+    const formattedData = {
+      "titulo": eventData.titulo,
+      "descripcion": eventData.descripcion,
+      "imagen": eventData.imageUrl ? eventData.imageUrl.replace(/^url\(['"]?|['"]?\)$/g, '').trim() : '',
+      "fecha": eventData.eventDate || new Date().toISOString(),
+      "ubicacion": eventData.eventLocation || '',
+      "comentarios": []
     };
 
-    console.log('Enviando evento:', newEvento);
-
-    this.service.createEvento(newEvento).subscribe({
+    this.service.createEvento(formattedData).subscribe({
       next: (response) => {
-        console.log('Evento creado exitosamente:', response);
+        console.log('Evento creado:', response);
         this.showCreateModal = false;
         this.isLoading = false;
         this.getResponse();
       },
       error: (error) => {
+        console.error('Error al crear evento:', error);
         this.isLoading = false;
-        console.error('Error detallado al crear el evento:', error);
-        
-        let errorMessage = 'Error al crear el evento: ';
-        if (error.error && error.error.detail) {
-          errorMessage += error.error.detail;
-        } else if (error.error && error.error.message) {
-          errorMessage += error.error.message;
-        } else if (error.message) {
-          errorMessage += error.message;
-        } else {
-          errorMessage += 'Error del servidor';
-        }
-        
-        alert(errorMessage);
+        alert('Error al crear el evento');
       }
     });
   }
@@ -313,5 +289,34 @@ export class AdministradorComponent implements OnInit {
   handleDateSelect(selectInfo: any) {
     // Cuando se selecciona una fecha
     this.showCreateModal = true;
+  }
+
+  onEventSelected(event: {id: string, selected: boolean}) {
+    if (event.selected) {
+      this.selectedEvents.push(event.id);
+    } else {
+      this.selectedEvents = this.selectedEvents.filter(id => id !== event.id);
+    }
+    this.showDeleteButton = this.selectedEvents.length > 0;
+  }
+
+  deleteSelectedEvents() {
+    if (confirm(`¿Estás seguro de que deseas eliminar ${this.selectedEvents.length} eventos?`)) {
+      const deletePromises = this.selectedEvents.map(id => 
+        this.service.deleteEvento(parseInt(id)).toPromise()
+      );
+
+      Promise.all(deletePromises)
+        .then(() => {
+          alert('Eventos eliminados correctamente');
+          this.selectedEvents = [];
+          this.showDeleteButton = false;
+          this.getResponse(); // Actualizar la lista de eventos
+        })
+        .catch(error => {
+          console.error('Error al eliminar eventos:', error);
+          alert('Error al eliminar algunos eventos');
+        });
+    }
   }
 }

@@ -12,12 +12,15 @@ import { ModalComponent } from '../modal/modal.component';
 export class CardComponent {
   @Input() cards: string = '';
   @Input() text: string = '';
-  @Input() photo: string = 'url(https://agendadeisa.com/wp-content/uploads/2020/07/clases-patinaje-nin%CC%83os-valencia.jpg)';
-
-  showModal: boolean = false;
+  @Input() photo: string = '';
+  @Input() eventDate: string = '';
+  @Input() eventLocation: string = '';
+  @Input() eventTime: string = '';
+  
+  showInfoModal: boolean = false;
 
   toggleModal() {
-    this.showModal = !this.showModal;
+    this.showInfoModal = !this.showInfoModal;
   }
 
   onActionClick() {

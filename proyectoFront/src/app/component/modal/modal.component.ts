@@ -118,10 +118,16 @@ export class ModalComponent {
       }
     }
 
-    this.saveEdit.emit({
-      ...this.formData,
-      imagen: imageUrl
-    });
+    const editedData = {
+      titulo: this.formData.titulo,
+      descripcion: this.formData.descripcion,
+      imageUrl: imageUrl,
+      eventDate: this.formData.fecha,
+      eventLocation: this.formData.ubicacion,
+      eventTime: this.formData.hora
+    };
+
+    this.saveEdit.emit(editedData);
   }
 
   onClose() {

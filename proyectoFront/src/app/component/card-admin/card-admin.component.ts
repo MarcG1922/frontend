@@ -18,11 +18,14 @@ export class CardAdminComponent {
   @Input() eventDate: string = '';
   @Input() eventLocation: string = '';
   @Input() eventTime: string = '';
+  @Input() showCheckbox: boolean = false;
 
   @Output() deleteEvent = new EventEmitter<string>();
+  @Output() eventSelected = new EventEmitter<{id: string, selected: boolean}>();
   
   showModal = false;
   isLoading = false;
+  isSelected: boolean = false;
 
   constructor(private requestService: RequestService) {}
 
@@ -49,9 +52,9 @@ export class CardAdminComponent {
     const formattedData = {
       "titulo": editedData.titulo || this.cards,
       "descripcion": editedData.descripcion || this.text,
-      "imagen": editedData.photo || this.photo,
-      "fecha": new Date().toISOString(),
-      "ubicacion": editedData.ubicacion || this.eventLocation,
+      "imagen": editedData.imageUrl ? this.formatImageUrl(editedData.imageUrl) : this.formatImageUrl(this.photo),
+      "fecha": editedData.eventDate || new Date().toISOString(),
+      "ubicacion": editedData.eventLocation || this.eventLocation,
       "comentarios": []
     };
 
@@ -72,6 +75,17 @@ export class CardAdminComponent {
 
   private formatImageUrl(image: string): string {
     if (!image) return '';
-    return image.replace('url(', '').replace(')', '') || 'string';
+    let formattedImage = image.replace(/^url\(['"]?|['"]?\)$/g, '');
+    formattedImage = formattedImage.trim();
+    return formattedImage;
+  }
+
+  onCheckboxChange(event: Event) {
+    event.stopPropagation();
+    this.isSelected = !this.isSelected;
+    this.eventSelected.emit({
+      id: this.eventoId,
+      selected: this.isSelected
+    });
   }
 }

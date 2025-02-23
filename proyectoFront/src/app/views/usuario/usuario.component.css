@@ -1,7 +1,7 @@
 .divider {
     border: 0; /* Elimina el borde predeterminado */
     height: 2px; /* Grosor de la barra */
-    background: #4e00c4; 
+    background: #020211; 
     margin-top: 50px ;
     margin-bottom: 80px; /* Espacio arriba y abajo de la barra */
 }
@@ -34,4 +34,94 @@ h2 {
     font-size: 1.2rem;
     color: #666;
     margin: 0;
+}
+
+.calendar-container {
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+/* Personalización del calendario */
+::ng-deep .fc {
+  font-family: 'Poppins', sans-serif;
+}
+
+::ng-deep .fc-toolbar-title {
+  font-size: 1.8em !important;
+  color: #2100c4 !important;
+  text-transform: capitalize;
+}
+
+::ng-deep .fc-button-primary {
+  background-color: #020211 !important;
+  border-color: #020211 !important;
+  padding: 8px 16px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+::ng-deep .fc-button-primary:hover {
+  background-color: #1a00a3 !important;
+  border-color: #1a00a3 !important;
+  transform: translateY(-2px);
+}
+
+::ng-deep .fc-daygrid-day {
+  transition: all 0.3s ease;
+}
+
+::ng-deep .fc-daygrid-day:hover {
+  background-color: #f8f9fa;
+}
+
+::ng-deep .fc-daygrid-day-number {
+  font-size: 1.1em;
+  color: #333;
+  padding: 8px !important;
+}
+
+::ng-deep .fc-day-today {
+  background-color: #eae6ff !important;
+}
+
+::ng-deep .fc-event {
+  background-color: #2100c4 !important;
+  border-color: #2100c4 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  font-size: 0.9em !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease !important;
+}
+
+::ng-deep .fc-event:hover {
+  transform: scale(1.02);
+}
+
+::ng-deep .fc-day-header {
+  padding: 10px 0 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  color: #2100c4 !important;
+}
+
+::ng-deep .fc-day-sat, ::ng-deep .fc-day-sun {
+  background-color: #fafafa;
+}
+
+::ng-deep .fc th {
+  padding: 10px 0 !important;
+  background-color: #f8f9fa !important;
+}
+
+::ng-deep .fc-col-header-cell {
+    color: #020211 !important;
+}
+
+.titles h3 {
+    color: #020211;
 }
