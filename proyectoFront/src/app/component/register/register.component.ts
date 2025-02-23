@@ -31,7 +31,6 @@ export class RegisterComponent {
       return;
     }
 
-    // Verificar si el correo ya está registrado
     this.requestService.getUsuarios().subscribe({
       next: (response) => {
         const emailExists = response.member.some(user => user.email === this.registerData.email);
@@ -41,7 +40,6 @@ export class RegisterComponent {
           return;
         }
 
-        // Si el correo no existe, proceder con el registro
         const phoneNumber = parseInt(this.registerData.phone, 10);
         
         if (isNaN(phoneNumber)) {
@@ -56,8 +54,6 @@ export class RegisterComponent {
           password: this.registerData.password
         }).subscribe({
           next: (response) => {
-            console.log('Usuario registrado exitosamente:', response);
-            
             // Guardar datos en sessionStorage
             sessionStorage.setItem('currentUser', JSON.stringify(response));
             sessionStorage.setItem('isLoggedIn', 'true');
@@ -67,7 +63,9 @@ export class RegisterComponent {
             this.cookieService.set('isLoggedIn', 'true', 7);
             
             alert('Registro exitoso');
-            this.router.navigate(['/login']);
+            
+            // Recargar la página para actualizar el estado
+            window.location.reload();
           },
           error: (error) => {
             console.error('Error al registrar usuario:', error);

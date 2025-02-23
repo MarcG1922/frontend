@@ -1,6 +1,13 @@
 @if (isLoggedIn == true){
     <div class="content">
         <h1 style="text-align: center;">Panel de administrador</h1>
+        <button class="btn-logout" (click)="logout()">Cerrar Sesión</button>
+        
+        <!-- Calendario -->
+        <div class="calendar-container">
+            <full-calendar [options]="calendarOptions"></full-calendar>
+        </div>
+
         <div class="add-event-button">
             <button class="btn-add" (click)="onAddEvent()">
                 <i class="fas fa-plus"></i> Añadir Nuevo Evento
@@ -44,25 +51,24 @@
             </app-modal>
         }
     </div>
-}@else{
+} @else {
+    <div class="container">
+        @if (case === 'one') {
+            <app-login></app-login>
+        }
 
-<div class="container">
-    @if (case === 'one') {
-    <app-login></app-login>
-    }
+        @if (case === 'two') {
+            <app-register></app-register>
+        }
 
-    @if (case === 'two') {
-    <app-register></app-register>
-    }
-
-    @if (case === 'three') {
-    <section class="success-section">
-        <h2>Página principal de admin</h2>
-        <div class="success-buttons">
-            <button (click)="goToLogin()" class="btn-secondary">Volver al inicio de sesión</button>
-            <button (click)="goToRegister()" class="btn-secondary">Volver a registrarte</button>
-        </div>
-    </section>
-    }
-</div>
+        @if (case === 'three') {
+            <section class="success-section">
+                <h2>Página principal de admin</h2>
+                <div class="success-buttons">
+                    <button (click)="goToLogin()" class="btn-secondary">Volver al inicio de sesión</button>
+                    <button (click)="goToRegister()" class="btn-secondary">Volver a registrarte</button>
+                </div>
+            </section>
+        }
+    </div>
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RequestService } from '../../services/request.service';
 import { LoginComponent } from '../../component/login/login.component';
@@ -6,6 +6,14 @@ import { RegisterComponent } from '../../component/register/register.component';
 import { CardComponent } from '../../component/card/card.component';
 import { CardAdminComponent } from '../../component/card-admin/card-admin.component';
 import { ModalComponent } from '../../component/modal/modal.component';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../../services/auth.service';
+import { CalendarOptions, EventInput } from '@fullcalendar/core';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-administrador',
@@ -16,15 +24,30 @@ import { ModalComponent } from '../../component/modal/modal.component';
     RegisterComponent, 
     CardComponent, 
     CardAdminComponent,
-    ModalComponent
+    ModalComponent,
+    CommonModule,
+    FullCalendarModule
   ],
   templateUrl: './administrador.component.html',
   styleUrl: './administrador.component.css'
 })
 
-export class AdministradorComponent {
+export class AdministradorComponent implements OnInit {
 
-  public constructor(public service: RequestService) { }
+  public constructor(
+    public service: RequestService,
+    private cookieService: CookieService,
+    private authService: AuthService
+  ) {
+    this.authService.isLoggedIn$.subscribe(
+      isLoggedIn => {
+        this.isLoggedIn = isLoggedIn;
+        if (isLoggedIn) {
+          this.getResponse();
+        }
+      }
+    );
+  }
 
   public case: string = 'one';
   public errorMessage: string = '';
@@ -57,9 +80,39 @@ export class AdministradorComponent {
   showCreateModal: boolean = false;
   isLoading: boolean = false;
 
+  calendarOptions: CalendarOptions = {
+    plugins: [dayGridPlugin],
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next',
+      center: 'title',
+      right: 'today'
+    },
+    events: [],
+    editable: true,
+    selectable: true,
+    selectMirror: true,
+    dayMaxEvents: true,
+    locale: 'es',
+    eventClick: this.handleEventClick.bind(this),
+    select: this.handleDateSelect.bind(this),
+    height: 'auto',
+    eventBackgroundColor: '#4CAF50',
+    eventBorderColor: '#4CAF50',
+    eventTextColor: '#fff',
+    buttonText: {
+      today: 'Hoy'
+    },
+    firstDay: 1,
+    fixedWeekCount: false,
+    showNonCurrentDates: false
+  };
+
   ngOnInit() {
-    this.isLoggedIn = Boolean(sessionStorage.getItem('isLoggedIn'));
-    this.getResponse();
+    this.isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    if (this.isLoggedIn) {
+      this.getResponse();
+    }
   }
 
   public getResponse(): void {
@@ -73,6 +126,26 @@ export class AdministradorComponent {
         this.eventDates = response.member.map(member => new Date(member.fecha).toLocaleDateString());
         this.eventLocations = response.member.map(member => member.ubicacion || 'Sin ubicación');
         this.eventTimes = response.member.map(member => new Date(member.fecha).toLocaleTimeString());
+
+        // Actualizar eventos del calendario
+        const calendarEvents: EventInput[] = response.member.map(event => ({
+          id: event.id.toString(),
+          title: event.titulo,
+          start: new Date(event.fecha),
+          end: new Date(event.fecha),
+          allDay: true,
+          extendedProps: {
+            description: event.descripcion,
+            location: event.ubicacion || 'Sin ubicación'
+          }
+        }));
+
+        // Actualizar las opciones del calendario
+        this.calendarOptions = {
+          ...this.calendarOptions,
+          events: calendarEvents
+        };
+        
         this.isLoadingEvents = false;
       },
       error: (error) => {
@@ -154,31 +227,71 @@ export class AdministradorComponent {
     this.case = 'one';
   }
 
+  public logout(): void {
+    this.authService.logout();
+    this.case = 'one';
+    this.cards = [];
+    this.text = [];
+    this.competitionsImageUrl = [];
+    this.eventIds = [];
+    this.eventDates = [];
+    this.eventLocations = [];
+    this.eventTimes = [];
+  }
+
   onAddEvent() {
     this.showCreateModal = true;
   }
 
   onSaveNewEvent(eventData: any) {
     this.isLoading = true;
+
+    // Validamos que tengamos todos los campos necesarios
+    if (!eventData.titulo || !eventData.descripcion) {
+      this.isLoading = false;
+      alert('Por favor, complete el título y la descripción');
+      return;
+    }
+
+    // Formateamos la fecha correctamente
+    const fecha = eventData.fecha && eventData.hora 
+      ? new Date(eventData.fecha + 'T' + eventData.hora).toISOString()
+      : new Date().toISOString();
+
     const newEvento = {
-      titulo: eventData.titulo || "Nuevo Evento",
-      descripcion: eventData.descripcion || "Descripción del nuevo evento",
+      titulo: eventData.titulo.trim(),
+      descripcion: eventData.descripcion.trim(),
       imagen: eventData.imagen || "https://via.placeholder.com/300",
-      fecha: new Date().toISOString(),
-      ubicacion: eventData.ubicacion || "Por determinar",
+      fecha: fecha,
+      ubicacion: eventData.ubicacion?.trim() || "Por determinar",
       comentarios: []
     };
 
+    console.log('Enviando evento:', newEvento);
+
     this.service.createEvento(newEvento).subscribe({
       next: (response) => {
+        console.log('Evento creado exitosamente:', response);
         this.showCreateModal = false;
         this.isLoading = false;
         this.getResponse();
       },
       error: (error) => {
         this.isLoading = false;
-        console.error('Error al crear el evento:', error);
-        alert('Error al crear el evento');
+        console.error('Error detallado al crear el evento:', error);
+        
+        let errorMessage = 'Error al crear el evento: ';
+        if (error.error && error.error.detail) {
+          errorMessage += error.error.detail;
+        } else if (error.error && error.error.message) {
+          errorMessage += error.error.message;
+        } else if (error.message) {
+          errorMessage += error.message;
+        } else {
+          errorMessage += 'Error del servidor';
+        }
+        
+        alert(errorMessage);
       }
     });
   }
@@ -189,5 +302,16 @@ export class AdministradorComponent {
 
   get stringEventIds(): string[] {
     return this.eventIds.map(id => id.toString());
+  }
+
+  handleEventClick(info: any) {
+    // Cuando se hace clic en un evento
+    const event = info.event;
+    alert(`Evento: ${event.title}\nDescripción: ${event.extendedProps.description}\nUbicación: ${event.extendedProps.location}`);
+  }
+
+  handleDateSelect(selectInfo: any) {
+    // Cuando se selecciona una fecha
+    this.showCreateModal = true;
   }
 }
