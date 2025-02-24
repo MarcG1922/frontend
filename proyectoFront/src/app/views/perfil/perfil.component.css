@@ -1,0 +1,104 @@
+/* Contenedor principal */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f4f9;
+  }
+  
+  /* Tarjeta del perfil */
+  .profile-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+  }
+  
+  /* Icono de usuario */
+  .profile-header {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .profile-icon {
+    font-size: 70px;
+    color: #4a90e2;
+  }
+  
+  .profile-header h2 {
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  /* Etiqueta de administrador */
+  .role-badge {
+    background: gold;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  /* Información del perfil */
+  .profile-info {
+    text-align: left;
+    margin: 20px 0;
+  }
+  
+  .profile-info p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-info i {
+    margin-right: 10px;
+    color: #4a90e2;
+  }
+  
+  /* Botones de acción */
+  .profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .edit-btn, .logout-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .edit-btn {
+    background: #4a90e2;
+    color: white;
+  }
+  
+  .logout-btn {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  .edit-btn i, .logout-btn i {
+    margin-right: 5px;
+  }
+  
+  /* Efectos hover */
+  .edit-btn:hover {
+    background: #357abd;
+  }
+  
+  .logout-btn:hover {
+    background: #c0392b;
+  }
+  

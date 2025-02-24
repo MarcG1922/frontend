@@ -1,0 +1,20 @@
+<div class="profile-container">
+    <div class="profile-card">
+      <div class="profile-header">
+        <i class="fas fa-user-circle profile-icon"></i>
+        <h2>{{ user.nombre }}</h2>
+        <span class="role-badge" *ngIf="user.admin">Administrador</span>
+      </div>
+      
+      <div class="profile-info">
+        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> {{ user.email }}</p>
+        <p><i class="fas fa-phone"></i> <strong>Teléfono:</strong> {{ user.telefono }}</p>
+        <p><i class="fas fa-id-badge"></i> <strong>ID Usuario:</strong> {{ user.id }}</p>
+      </div>
+  
+      <div class="profile-actions">
+        <button class="logout-btn" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>
+  

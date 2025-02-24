@@ -82,11 +82,20 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+<<<<<<< HEAD
+=======
+              "src/favicon.ico",
+              "src/assets",
+>>>>>>> marc
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
+<<<<<<< HEAD
+=======
+
+>>>>>>> marc
             "styles": [
               "src/styles.css"
             ],

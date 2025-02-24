@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .small-calendar {
     width: 80%;
     margin: 0 auto;
@@ -21,3 +22,88 @@
     font-size: 12px;
     padding: 4px;
 }
+=======
+.calendar-container {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin: 20px;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.calendar-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.view-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+:host ::ng-deep .cal-week-view {
+  border-radius: 8px;
+  border: 1px solid #e1e1e1;
+}
+
+:host ::ng-deep .cal-month-view {
+  border-radius: 8px;
+  border: 1px solid #e1e1e1;
+}
+
+:host ::ng-deep .cal-hour-segment {
+  height: 40px !important;
+}
+
+:host ::ng-deep .cal-hour {
+  font-weight: bold;
+}
+
+.btn i {
+  margin: 0 5px;
+}
+
+:host ::ng-deep .fc {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+:host ::ng-deep .fc-toolbar-title {
+  font-size: 1.5em !important;
+  color: #333;
+}
+
+:host ::ng-deep .fc-button {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+
+:host ::ng-deep .fc-button:hover {
+  background-color: #0056b3 !important;
+  border-color: #0056b3 !important;
+}
+
+:host ::ng-deep .fc-day-today {
+  background-color: #e8fdf5 !important;
+} 
+>>>>>>> marc

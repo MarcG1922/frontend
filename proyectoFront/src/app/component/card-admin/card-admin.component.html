@@ -1,0 +1,45 @@
+<!-- Contenido de la tarjeta -->
+<div class="card">
+    @if (showCheckbox) {
+        <div class="checkbox-container">
+            <input 
+                type="checkbox" 
+                [checked]="isSelected"
+                (click)="onCheckboxChange($event)"
+                class="event-checkbox"
+            >
+        </div>
+    }
+    <div style="height: 200px;" class="photo" [ngStyle]="{'backgroundImage': photo}" (click)="toggleModal()">
+        <div class="admin-controls" (click)="$event.stopPropagation()">
+            <button class="btn-edit" (click)="toggleModal()">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn-delete" (click)="onDelete()">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="titles">
+            <h3>{{cards}}</h3>
+            <p>{{text}}</p>
+        </div>
+    </div>
+</div>
+
+@if (showModal) {
+    <app-modal
+        [show]="showModal"
+        [isEditing]="true"
+        [title]="cards"
+        [description]="text"
+        [imageUrl]="photo"
+        [eventDate]="eventDate"
+        [eventLocation]="eventLocation"
+        [eventTime]="eventTime"
+        [isLoading]="isLoading"
+        (closeModal)="toggleModal()"
+        (saveEdit)="onSaveEdit($event)">
+    </app-modal>
+}

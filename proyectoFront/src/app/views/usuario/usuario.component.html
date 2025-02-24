@@ -1,5 +1,6 @@
 <app-jumbotron></app-jumbotron>
 <div id="page">
+<<<<<<< HEAD
     <section>
         <div class="section-header">
             <h2>Nuestras competiciones</h2>
@@ -18,10 +19,50 @@
     <section>
         <div class="section-header">
             <h2>Nuestros Instructores</h2>
+=======
+    <section id="info">
+        <div class="section-header">
+        <h1>Sobre nosotros</h1>
+        </div>
+        <app-info></app-info>
+    </section>
+    <section>
+        <div id="eventos" class="section-header">
+            <h1>Nuestras competiciones</h1>
+            <p>Descubre en qué competencias participamos a lo largo del curso</p>
+        </div>
+        <div class="content">
+            <section class="competitions-section">
+                <h2>Próximos Eventos</h2>
+                @if (isLoadingEvents) {
+                    <div class="loading-container">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Cargando eventos...</p>
+                    </div>
+                } @else {
+                    <div class="grid">
+                        @for (item of cards; track item; let i = $index) {
+                            <app-card 
+                                [cards]="cards[i]" 
+                                [text]="text[i]"
+                                [photo]="'url(' + competitionsImageUrl[i] + ')'">
+                            </app-card>
+                        }
+                    </div>
+                }
+            </section>
+        </div>
+    </section>
+    <hr class="divider">
+    <section id="inst">
+        <div class="section-header">
+            <h1>Nuestros Instructores</h1>
+>>>>>>> marc
             <p>Conoce a nuestros expertos instructores</p>
         </div>
         <div class="instructores-container">
             @for (instructor of name; track instructor; let i = $index) {
+<<<<<<< HEAD
             <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="imageUrl">
             </app-instructores>
             }
@@ -30,4 +71,21 @@
     </section>
 </div>
 <app-calendario></app-calendario>
+=======
+            <app-instructores [name]="name[i]" [speed]="speed[i]" [imageUrl]="instructorsImageUrl">
+            </app-instructores>
+            }
+        </div>
+    </section>
+</div>
+<section id="calendario">
+    <div class="section-header">
+        <h1>Calendario de Eventos</h1>
+        <p>Consulta nuestros próximos eventos y actividades</p>
+    </div>
+    <div class="calendar-container">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+</section>
+>>>>>>> marc
 <app-form></app-form>

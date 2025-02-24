@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* header.component.css */
 .bg-primary {
     background-color: #2100c4 !important;
@@ -14,3 +15,212 @@
   .nav-link:hover, .nav-link.active {
     color: white !important;
   }
+=======
+/* Estilos generales */
+.header {
+  background-color: rgb(2, 2, 17);
+  color: white;
+  padding: 10px 10px;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 55px;
+  margin-right: 10px;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Botones de autenticación */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-button {
+  padding: 0.3rem 1rem;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.login {
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.login:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-3px);
+}
+
+.register {
+  color: #333;
+  background-color: white;
+}
+
+.register:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-3px);
+}
+
+.auth-button:hover {
+  opacity: 0.9;
+}
+
+/* Menú hamburguesa */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animación del icono cuando está activo */
+.hamburger.active .line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .auth-buttons {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background-color: rgb(2, 2, 17);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .auth-buttons.active {
+    display: flex;
+  }
+
+  .auth-button {
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.user-icon {
+  color: white;
+  font-size: 24px;
+}
+/* Menú desplegable */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+/* Encabezado del dropdown */
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: #f5f5f5;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-header i {
+  font-size: 20px;
+  color: #555;
+}
+
+/* Opciones del menú */
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.dropdown-menu a i {
+  color: #666;
+}
+
+/* Separador */
+hr {
+  margin: 5px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* Efecto hover */
+.dropdown-menu a:hover {
+  background: #f0f0f0;
+}
+>>>>>>> marc

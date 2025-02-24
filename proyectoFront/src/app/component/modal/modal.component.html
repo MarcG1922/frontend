@@ -1,0 +1,83 @@
+@if (show) {
+    <div class="modal">
+        <div class="modal-overlay" (click)="onClose()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{{isEditing ? 'Editar Evento' : title}}</h2>
+                <button class="close-button" (click)="onClose()">×</button>
+            </div>
+            <div class="modal-body">
+                @if (isLoading) {
+                    <div class="loading-overlay">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                }
+                @if (isEditing) {
+                    <div class="edit-form">
+                        <div class="form-group">
+                          <label for="titulo">Título:</label>
+                          <input type="text" id="titulo" [(ngModel)]="editedData.titulo" name="titulo" required>
+                          <div *ngIf="!editedData.titulo && formSubmitted" class="error-message">
+                            El título es obligatorio.
+                          </div>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="descripcion">Descripción:</label>
+                          <textarea id="descripcion" [(ngModel)]="editedData.descripcion" name="descripcion" rows="3" required></textarea>
+                          <div *ngIf="!editedData.descripcion && formSubmitted" class="error-message">
+                            La descripción es obligatoria.
+                          </div>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="imagen">URL de la imagen:</label>
+                          <input type="text" id="imagen" [(ngModel)]="editedData.imagen" name="imagen" required>
+                          <div *ngIf="!editedData.imagen && formSubmitted" class="error-message">
+                            La URL de la imagen es obligatoria.
+                          </div>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="fecha">Fecha:</label>
+                          <input type="date" id="fecha" [(ngModel)]="editedData.fecha" name="fecha" required>
+                          <div *ngIf="!editedData.fecha && formSubmitted" class="error-message">
+                            La fecha es obligatoria.
+                          </div>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="ubicacion">Ubicación:</label>
+                          <input type="text" id="ubicacion" [(ngModel)]="editedData.ubicacion" name="ubicacion" required>
+                          <div *ngIf="!editedData.ubicacion && formSubmitted" class="error-message">
+                            La ubicación es obligatoria.
+                          </div>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="hora">Hora:</label>
+                          <input type="time" id="hora" [(ngModel)]="editedData.hora" name="hora" required>
+                          <div *ngIf="!editedData.hora && formSubmitted" class="error-message">
+                            La hora es obligatoria.
+                          </div>
+                        </div>
+                      
+                        <button class="save-btn" (click)="onSave()">Guardar Cambios</button>
+                      </div>
+                      
+                } @else {
+                    <img [src]="imageUrl" [alt]="title">
+                    <div class="modal-text">
+                        <h3>Descripción del evento</h3>
+                        <p>{{description}}</p>
+                        <div class="event-details">
+                            <p><strong>Fecha:</strong> {{eventDate}}</p>
+                            <p><strong>Lugar:</strong> {{eventLocation}}</p>
+                            <p><strong>Hora:</strong> {{eventTime}}</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+} 

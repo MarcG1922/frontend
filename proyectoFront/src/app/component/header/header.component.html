@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container-fluid">
     <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse" data-bs-target="#opciones">
@@ -32,3 +33,55 @@
     </div>
   </div>
 </nav>
+=======
+<header class="header">
+  <nav class="navbar">
+    <a style="text-decoration: none; color: white;" href="/usuario">
+    <div class="logo-container">
+      <img [src]="logoPath" alt="Logo Club Patinaje" class="logo">
+      <span class="brand-name">Club Patinaje Manises</span>
+    </div>
+    </a>
+    <!-- Ícono de menú hamburguesa -->
+    <div class="hamburger" (click)="toggleMenu()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+    <div *ngIf="!isLoggedIn; else loggedInTemplate" class="auth-buttons" [class.active]="isMenuOpen">
+      <a [routerLink]="['/login']" class="auth-button login">Log in</a>
+      <a [routerLink]="['/register']" class="auth-button register">Register</a>
+    </div>
+    
+    <ng-template #loggedInTemplate>
+      <div class="user-dropdown">
+        <div class="user-icon" (click)="toggleDropdown()">
+          <i class="fas fa-user"></i>
+        </div>
+    
+        <div class="dropdown-menu" *ngIf="isDropdownOpen">
+          <div class="dropdown-header">
+            <i class="fas fa-user-circle"></i>
+            <span>{{ userName }}</span>
+          </div>
+          <a (click)="close()" [routerLink]="['/perfil']">
+            <i class="fas fa-user"></i> Perfil
+          </a>
+          <ng-container *ngIf="admin">
+            <a (click)="close()" [routerLink]="['/admin']">
+              <i class="fas fa-crown admin-icon"></i> Panel Admin
+            </a>
+          </ng-container>
+          <hr />
+          <a (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+          </a>
+        </div>
+      </div>
+    </ng-template>
+    
+    
+  </nav>
+</header>
+>>>>>>> marc

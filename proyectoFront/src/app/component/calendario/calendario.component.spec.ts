@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+<<<<<<< HEAD
 
+=======
+>>>>>>> marc
 import { CalendarioComponent } from './calendario.component';
 
 describe('CalendarioComponent', () => {
@@ -20,4 +23,8 @@ describe('CalendarioComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+<<<<<<< HEAD
 });
+=======
+}); 
+>>>>>>> marc
