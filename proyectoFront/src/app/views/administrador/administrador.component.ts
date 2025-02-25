@@ -97,9 +97,9 @@ export class AdministradorComponent implements OnInit {
     eventClick: this.handleEventClick.bind(this),
     select: this.handleDateSelect.bind(this),
     height: 'auto',
-    eventBackgroundColor: '#4CAF50',
-    eventBorderColor: '#4CAF50',
-    eventTextColor: '#fff',
+    eventBackgroundColor: '#020211',
+    eventBorderColor: '#020211',
+    eventTextColor: '#ffffff',
     buttonText: {
       today: 'Hoy'
     },

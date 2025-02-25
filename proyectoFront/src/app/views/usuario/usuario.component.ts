@@ -29,10 +29,10 @@ export class UsuarioComponent implements OnInit {
 
   public cards: string[] = [];
   public text: string[] = [];
-  public name: string[] = ["Ana García", "Carlos Ruiz", "Laura Martín", "Pedro Sánchez"];
+  public name: string[] = ["Ana García", "Carlos Ruiz", "Laura Martín", "Pedro"];
   public speed: string[] = ["Patinaje Artístico", "Velocidad", "Iniciacion", "Freestyle"];
   public competitionsImageUrl: string[] = [];
-  public instructorsImageUrl: string = 'https://ethic.es/wp-content/uploads/2023/03/imagen.jpg';
+  public instructorsImageUrl: string = 'https://images.pexels.com/photos/4101142/pexels-photo-4101142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
   public eventDates: string[] = [];
   public eventLocations: string[] = [];
   public eventTimes: string[] = [];
@@ -50,8 +50,8 @@ export class UsuarioComponent implements OnInit {
     height: 'auto',
     eventDisplay: 'block',
     displayEventTime: true,
-    eventBackgroundColor: '#4e00c4',
-    eventBorderColor: '#4e00c4',
+    eventBackgroundColor: '#020211',
+    eventBorderColor: '#020211',
     eventTextColor: '#ffffff',
     dayCellClassNames: 'calendar-day',
     dayHeaderClassNames: 'calendar-header',

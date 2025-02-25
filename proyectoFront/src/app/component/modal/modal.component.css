@@ -276,16 +276,43 @@ button {
 }
 
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: #020211;
     color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #020211;
+    opacity: 0.9;
 }
 
 button[type="button"] {
     background-color: #6c757d;
     color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+}
+
+.form-group label {
+    color: #020211;
+    font-weight: 500;
+}
+
+.image-preview {
+    border: 2px solid #020211;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 10px;
 }

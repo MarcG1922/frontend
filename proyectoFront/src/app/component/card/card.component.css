@@ -11,12 +11,15 @@
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    transform: scale(1.05); /* Amplía la tarjeta un 5% al hacer hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
-  }
-  .card .card-title {
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card .card-title {
     font-family: "Montserrat", Sans-serif;
     font-size: 21px;
     text-transform: uppercase;
@@ -24,17 +27,50 @@
     color: #C4001A;
     margin: 10px 0px 10px 0px;
     padding: 15px 0px 0px 0px;
-  }
-  .photo {
-    width: 100%; /* Ocupa todo el ancho del contenedor padre */
-    height: 200px; /* Altura fija */
-    background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-  }
+}
 
-  /* Estilos del Modal */
-  .modal {
+.photo {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.footer {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.titles {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.titles h3 {
+    font-family: "Montserrat", Sans-serif;
+    font-size: 18px;
+    color: #020211;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.titles p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Estilos del Modal */
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -44,9 +80,9 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
+}
 
-  .modal-overlay {
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -58,9 +94,9 @@
     align-items: center;
     z-index: 1000;
     animation: fadeIn 0.2s ease-out;
-  }
+}
 
-  .modal-content {
+.modal-content {
     background-color: white;
     border-radius: 8px;
     width: 95%;
@@ -69,101 +105,83 @@
     overflow-y: auto;
     position: relative;
     animation: slideUp 0.3s ease-out;
-  }
+}
 
-  .modal-header {
-    height: 400px;
+.modal-header {
+    height: 300px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     position: relative;
-  }
+}
 
-  .close-button {
+.close-button {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.6);
+    top: 10px;
+    right: 10px;
+    background: rgba(2, 2, 17, 0.5);
     color: white;
     border: none;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-  }
+    transition: background-color 0.3s;
+}
 
-  .close-button:hover {
-    background: rgba(0, 0, 0, 0.8);
-    transform: scale(1.1);
-  }
+.close-button:hover {
+    background: rgba(2, 2, 17, 0.7);
+}
 
-  .modal-body {
+.modal-body {
     padding: 30px;
-  }
+}
 
-  .modal-body h2 {
-    color: #C4001A;
+.modal-body h2 {
+    color: #020211;
     margin-bottom: 20px;
     font-size: 2em;
-    text-align: center;
-  }
+}
 
-  .modal-body p {
-    color: #333;
-    line-height: 1.6;
-  }
+.event-details {
+    margin-bottom: 30px;
+}
 
-  .event-details {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 25px;
-    margin: 20px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-
-  .event-details p {
-    margin: 15px 0;
+.event-details p {
+    margin: 10px 0;
+    font-size: 1.2em;
     display: flex;
     align-items: center;
-    gap: 15px;
-    color: #333;
-    font-size: 1.2em;
-  }
+    gap: 10px;
+}
 
-  .event-details i {
-    color: #C4001A;
+.event-details i {
+    color: #020211;
     width: 25px;
     font-size: 1.3em;
-  }
+}
 
-  .event-description {
-    margin-top: 25px;
-    line-height: 1.8;
-    padding: 0 10px;
-  }
-
-  .event-description p {
+.event-description p {
     color: #666;
     font-size: 1.2em;
     text-align: justify;
-  }
+}
 
-  .modal-footer {
+.modal-footer {
     padding: 1.5rem;
     border-top: 1px solid #eee;
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-  }
+}
 
-  .action-button {
+.action-button {
     padding: 0.75rem 1.5rem;
     background: #007bff;
     color: white;
@@ -171,13 +189,13 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
+}
 
-  .action-button:hover {
+.action-button:hover {
     background: #0056b3;
-  }
+}
 
-  .cancel-button {
+.cancel-button {
     padding: 0.75rem 1.5rem;
     background: #6c757d;
     color: white;
@@ -185,27 +203,27 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
+}
 
-  .cancel-button:hover {
+.cancel-button:hover {
     background: #5a6268;
-  }
+}
 
-  /* Animaciones */
-  .modal {
+/* Animaciones */
+.modal {
     animation: fadeIn 0.3s ease-out;
-  }
+}
 
-  .modal-content {
+.modal-content {
     animation: slideIn 0.3s ease-out;
-  }
+}
 
-  @keyframes fadeIn {
+@keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-  }
+}
 
-  @keyframes slideIn {
+@keyframes slideIn {
     from {
         transform: translateY(-20px);
         opacity: 0;
@@ -214,9 +232,9 @@
         transform: translateY(0);
         opacity: 1;
     }
-  }
+}
 
-  @keyframes slideUp {
+@keyframes slideUp {
     from {
         transform: translateY(50px);
         opacity: 0;
@@ -225,10 +243,10 @@
         transform: translateY(0);
         opacity: 1;
     }
-  }
+}
 
-  /* Responsive */
-  @media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 768px) {
     .modal-content {
         width: 95%;
         margin: 10px;
@@ -236,7 +254,7 @@
     }
 
     .modal-header {
-        height: 300px;
+        height: 200px;
     }
 
     .modal-body {
@@ -263,4 +281,17 @@
     .cancel-button {
         width: 100%;
     }
-  }
+}
+
+/* Actualizar animación del botón */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(2, 2, 17, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(2, 2, 17, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(2, 2, 17, 0);
+    }
+}

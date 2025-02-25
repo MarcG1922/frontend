@@ -25,7 +25,10 @@
                             <app-card 
                                 [cards]="cards[i]" 
                                 [text]="text[i]"
-                                [photo]="'url(' + competitionsImageUrl[i] + ')'">
+                                [photo]="'url(' + competitionsImageUrl[i] + ')'"
+                                [eventDate]="eventDates[i]"
+                                [eventLocation]="eventLocations[i]"
+                                [eventTime]="eventTimes[i]">
                             </app-card>
                         }
                     </div>
